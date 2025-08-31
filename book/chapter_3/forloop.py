@@ -27,7 +27,7 @@ sum(numbers)
 #empty list for odd number
 odd_num = []
 
-for i in range(0,20,2):
+for i in range(0,20,2):#range(start,end,increment) -1 is end if empty list move by one 
     odd_num.append(i)
 
 #empty list for number by 3 skipping 
