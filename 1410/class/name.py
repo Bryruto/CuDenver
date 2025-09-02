@@ -12,11 +12,8 @@ def main():
 
             else:
                 print("you cant go",name)
-            x = False
-            
         except:
             print("age is invaild enter a string")
-
 
 def get_name():
     name = input("enter your name:")
