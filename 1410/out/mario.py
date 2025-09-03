@@ -1,5 +1,8 @@
 def main():
     height = int(input("give me a height:"))
+    mario1(height)
+    mario2(height)
+    mario3(height)
     mario4(height)
 
 def mario1(height:int):
