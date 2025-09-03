@@ -25,6 +25,7 @@ def main():
     # next we convert using the standard F to C formula 
     original_celsius = (fahren-32)*(5/9) 
 
+    #celsius is a list append to that list for loop comp
     celsius = [((i+1+fahren)-32)*(5/9) for i in range(10)]
 
     # finally, print out the conversion 
