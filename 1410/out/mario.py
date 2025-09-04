@@ -21,12 +21,12 @@ def mario2(height:int):
             print("#",end = "")
         print()
 
-#under this i didnt do
+
 def mario3(height:int):
     for i in range(height):
         print("#" * (i + 1)) #forgot about str * number is str number times 
 
-#aaaaaaaaaaa recursion 
+#recursion 
 def mario4(height:int,row = 1):
     if row > height:
         return
