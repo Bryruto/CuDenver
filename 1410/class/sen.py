@@ -10,5 +10,5 @@ def main():
         if i == " ":
             word +=1
 
-    print(f"words:{word} caps{counter} char{len(sen)}")
+    print(f"words:{word} caps:{counter} char:{len(sen)}")
 main()
