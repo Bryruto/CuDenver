@@ -1,4 +1,0 @@
-The THIEF is: Bruce
-city the thief ESCAPED TO: New York City (Airport ID 4)
-The ACCOMPLICE is: Robin
-
