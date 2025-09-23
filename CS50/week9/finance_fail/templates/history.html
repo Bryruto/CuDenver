@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block title %}
+
+{% endblock %}
+
+{% block main %}
+<table>
+  <thead>
+    <tr>
+      <th>Symbol</th>
+      <th>Shares</th>
+      <th>Price</th>
+      <th>type</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for transaction in stuff %}
+      <tr>
+        <td>{{ transaction.symbol }}</td>
+        <td>{{ transaction.shares }}</td>
+        <td>{{ transaction.price | usd }}</td>
+        <td>{{transaction.type}}</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

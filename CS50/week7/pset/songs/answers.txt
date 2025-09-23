@@ -1,0 +1,9 @@
+If songs.db contains the top 100 songs of one listener from 2018, how would you characterize their audio aura?
+
+To figure out the audio Aura I would most likely go through all 100 songs and separate them into categories of the six moods and then whatever mood most aligns with the color I would apply the color to that
+
+
+Hypothesize about why the way you’ve calculated this aura might not be very representative of the listener. What better ways of calculating this aura would you propose?
+
+
+Best way I think would be the way that I said which would be literally just grabbing every single song putting them into one of the six mood categories figuring out what mood category is the highest and then put them with their respective colors based on that

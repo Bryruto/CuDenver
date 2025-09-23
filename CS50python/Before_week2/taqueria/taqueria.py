@@ -1,0 +1,27 @@
+dict = {
+    "Baja Taco": 4.25,
+    "Burrito": 7.50,
+    "Bowl": 8.50,
+    "Nachos": 11.00,
+    "Quesadilla": 8.50,
+    "Super Burrito": 8.50,
+    "Super Quesadilla": 9.50,
+    "Taco": 3.00,
+    "Tortilla Salad": 8.00
+}
+total =0.0
+while True:
+    try:
+        item = input("Item: ").title()
+        if item in dict:
+            total += dict[item]
+            print(f"Total:${total:.2f}")#this is because check50 did not work right
+    except EOFError:
+        print()
+        break
+
+print(f"Total:${total}")
+
+
+
+#the check50 is broken
