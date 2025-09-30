@@ -9,10 +9,16 @@ def main():
     
 def pythonic(file):
     df = pandas.read_csv(file)
-    print(df["FirstName"])
+    my_list = []
     unique = list(set(df["FirstName"]))
     for name in unique:
-        print(f"{name}:{list(df["FirstName"]).count(name)}")
+        #print(f"{name}:{list(df["FirstName"]).count(name)}")
+        my_list.append(str(df["FirstName"]).count(name))
+        
+    df["count"]= [my_list]
+    df=df[["FirstName","count"]]
+    df.to_csv("output.csv",index=True,header= False)
+
 
     
 def try1(file):
