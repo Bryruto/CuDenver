@@ -5,7 +5,7 @@ def main():
         name = input("enter stop to stop name: ").lower()
         if name == "stop":
             break
-        names.append(names)
+        names.append(name)
     try1(names)
 
 
