@@ -2,14 +2,10 @@ def main():
 
     names = []
     while True:
-        name = input("enter stop to stop name: ").lower()
+        name = input("enter stop to stop name: ").lower().strip()
         if name == "stop":
             break
-        names.append(names)
-    try1(names)
-
-
-def try1(names):
+        names.append(name)
     count = 0
     new_list = []
     
