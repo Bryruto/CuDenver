@@ -2,7 +2,7 @@ def main():
 
     names = []
     while True:
-        name = input("enter stop to stop name: ").lower()
+        name = input("enter stop to stop name: ").lower().strip()
         if name == "stop":
             break
         names.append(name)
