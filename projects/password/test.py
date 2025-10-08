@@ -1,8 +1,31 @@
-from hash import fix,my_hash
+def main():
+    word = list("brycen")
+    new = ""
+    for i in word:
+        new+=i
+    print(new) 
 
-def test_fix():
+    new = ""
+    for i in range(len(word)-1):
+        for j in range((len(word)-1)-i):
+            tmp = word[j+i]
+            word[j+i] = word[(j+1)+i]
+            word[(j+1)+i] = tmp
+             
+    for i in word:
+        new+=i
+    print(new) 
 
-    assert fix(my_hash("AbC")) == "AbC"
-    assert fix(my_hash("HelloWorld")) == "HelloWorld"
-    assert fix(my_hash("abcXYZ")) == "abcXYZ"
-    assert fix(my_hash("zzzz")) == "zzzz"
+    new = ""
+    for i in range(len(word)-2, -1, -1):
+        for j in range((len(word)-1)-i-1, -1, -1):
+            tmp = word[(j+1)+i]
+            word[(j+1)+i] = word[j+i]
+            word[j+i] = tmp
+
+    for i in word:
+        new+=i
+    print(new) 
+
+
+main()
