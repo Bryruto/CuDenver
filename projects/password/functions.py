@@ -20,7 +20,7 @@ def add_to_file(admin):
 
 
 
-def look_at_file(admin):
+def look_at_file():
     
     looking_for = input("ENTER * TO SEE ALL ENTER APP NAME:").strip().lower()
         

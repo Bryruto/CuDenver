@@ -1,8 +1,19 @@
 abc = 26
 def my_hash(word):
 
+    
+
     word_size = len(word)
-    hashed = "" 
+    hashed = ""
+
+    new = list(word)
+    for i in range(word_size-1):
+        for j in range((word_size-1)-i):
+            tmp = new[j+i]
+            new[j+i] = new[(j+1)+i]
+            new[(j+1)+i] = tmp
+    word = "".join(new).replace(" " , "")
+
     for index in range(word_size):
 
         if word[index].isupper():
@@ -21,17 +32,25 @@ def my_hash(word):
 
             hashed += chr(num + 97)
             
-
         else:
-            hashed += word[index] 
+            hashed += word[index]
+        
     return hashed.strip()
 
-#add a unhash get it working then add more 
 
 def fix(word):
-
     word_size = len(word)
     hashed = ""
+
+    new = list(word)
+    for i in range(word_size-2, -1, -1):
+        for j in range((word_size-1)-i-1, -1, -1):
+            tmp = new[(j+1)+i]
+            new[(j+1)+i] = new[j+i]
+            new[j+i] = tmp
+    word = "".join(new)
+
+
     for index in range(word_size):
 
         if word[index].isupper():
@@ -52,4 +71,4 @@ def fix(word):
         
         else:
             hashed += word[index]
-    return hashed.strip()
+    return hashed.strip().replace(" " , "")

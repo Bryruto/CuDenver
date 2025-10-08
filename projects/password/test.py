@@ -12,9 +12,6 @@ def main():
             word[j+i] = word[(j+1)+i]
             word[(j+1)+i] = tmp
              
-    for i in word:
-        new+=i
-    print(new) 
 
     new = ""
     for i in range(len(word)-2, -1, -1):
@@ -22,10 +19,6 @@ def main():
             tmp = word[(j+1)+i]
             word[(j+1)+i] = word[j+i]
             word[j+i] = tmp
-
-    for i in word:
-        new+=i
-    print(new) 
 
 
 main()
