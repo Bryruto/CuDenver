@@ -8,7 +8,6 @@ def main():
         names.append(name)
     try1(names)
 
-
 def try1(names):
     count = 0
     new_list = []
