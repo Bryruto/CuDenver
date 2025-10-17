@@ -11,7 +11,7 @@ def read_from(file:str)->str:
 
     return big_string
 
-def word_counter(words:list)->dict:
+def word_counter(words:list)->dict:#im here i need to sort the count dict
     word_count = {} #word -> count
     for word in words:
         word.strip()
@@ -19,6 +19,7 @@ def word_counter(words:list)->dict:
             word_count[word] += 1
         else:
             word_count[word] = 1
+    return word_count
     
 
 def char_counter(word:str)->dict:
@@ -28,33 +29,21 @@ def char_counter(word:str)->dict:
             char_count[word] += 1
         else:
             char_count[word] = 1
+    return char_count
 
 def sort_dict(sort_me:dict)->dict:
-    mid = len(sort_me) //2
-    left = sort_me[:mid] 
-    right = sort_me[mid:]
+    result = []
+    pairs = list(sort_me.items())
 
-    #left side
-    l_tmp = len(left)
-    while l_tmp > 1:
-        pass
-    
-    #right side
-    r_tmp = len(right)
-    while r_tmp > 1:
-        pass
+    mid = len(pairs) // 2
+    right = pairs[mid:]
+    left = pairs[:mid]
+
+    i,j = 0,0
+
+    while i < len(left) and j < len(right):
+        
 
     
 
-
-
-
-def main():
-    book = read_from("pg2701.txt")
-    words = book.split(" ")
-    word_count = word_counter(words)
-    
-
-
-main()
 
