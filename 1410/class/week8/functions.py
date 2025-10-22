@@ -66,11 +66,18 @@ def merge(l:list,r:list)->list:
 
 def print_result(a:dict,b:dict)->None:
     print("word count")
+    i = 0
     for key,value in b.items():
         print(f"{value:<7} {key:^10}")
+        i += 1
+        if i == 10:
+            break
     
     print()
     print("character count")
+    i = 0
     for key,value in a.items():
         print(f"{value:<7} {key:^10}")
-
+        i += 1
+        if i == 10:
+            break
