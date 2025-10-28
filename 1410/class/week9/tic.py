@@ -3,7 +3,7 @@ open_moves = [(r,c) for r in range(3) for c in range(3)]
 mapping = {real:easy for real,easy in zip([(r,c) for r in range(1,10,4) for c in range(1,10,4)] , [(r,c) for r in range(3) for c in range(3)])}#i love zip 
 owns = {}
 
-
+#this is bad code but it was fun 
 #print(mapping)
 
 o = {"row0":0,"row1":0,"row2":0,
@@ -25,9 +25,9 @@ def build_a_board():#there must be a better way no time tho
                 print("# ", end="")
             else:
                 if (i, y) in mapping:
-                    easy = mapping[(i, y)]
-                    if easy in owns:
-                        print(owns[easy], end=" ")  
+                    tmp = mapping[(i, y)]
+                    if tmp in owns:
+                        print(owns[tmp], end=" ")  
                     else:
                         print("  ", end="")                    
                 else:
