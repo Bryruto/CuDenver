@@ -38,14 +38,12 @@ def build_a_board():#there must be a better way no time tho
 def is_winner(i:int):#check if winner 
     if i == 0:
         for v in x.values():
-            build_a_board()
             if v == 3:
                 return "winner is x"
         
     else:
         for v in o.values():
             if v == 3:
-                build_a_board()
                 return "winner is o"
     return ""
 
