@@ -1,0 +1,100 @@
+Jill Garcia|S10000|CS101;PSY120;ENG103;HIST110|613 College Dr, Dorm 1|865 Oak St, Aurora, CO|2.78
+Alice Lewis|S10001|HIST110;MATH202;ECON200;PHYS130|756 College Dr, Dorm 1|875 Maple St, Colorado Springs, CO|2.72
+Laura Smith|S10002|ENG103;MATH202;PSY120;ART100;ECON200|201 College Dr, Dorm 4|314 Elm St, Fort Collins, CO|3.27
+Hannah Lewis|S10003|CHEM210;BIO105;PHYS130;PSY120|779 College Dr, Dorm 5|390 Pine St, Colorado Springs, CO|3.64
+George Clark|S10004|CHEM210;PSY120;CS101;ECON200|119 College Dr, Dorm 4|245 Elm St, Denver, CO|2.1
+Bob Lewis|S10005|MATH202;HIST110;ART100|156 College Dr, Dorm 5|101 Cedar St, Fort Collins, CO|2.33
+Kevin Brown|S10006|ENG103;HIST110;ECON200;ART100;BIO105|760 College Dr, Dorm 1|379 Maple St, Denver, CO|3.75
+Jill Quincy|S10007|CS101;ENG103;MATH202;BIO105|384 College Dr, Dorm 4|249 Maple St, Colorado Springs, CO|2.26
+Paula Evans|S10008|CHEM210;PSY120;PHYS130;HIST110;ART100|597 College Dr, Dorm 4|321 Elm St, Boulder, CO|2.01
+Mike Turner|S10009|ART100;HIST110;ECON200|955 College Dr, Dorm 3|588 Maple St, Colorado Springs, CO|2.67
+Sara Garcia|S10010|MATH202;ENG103;CS101;PHYS130;ART100|719 College Dr, Dorm 5|899 Oak St, Denver, CO|3.0
+Ryan Perez|S10011|ART100;PSY120;ECON200;CHEM210|564 College Dr, Dorm 5|688 Oak St, Aurora, CO|2.31
+Alice Foster|S10012|CS101;ENG103;BIO105;PHYS130|815 College Dr, Dorm 4|928 Oak St, Fort Collins, CO|3.96
+Mike Miller|S10013|HIST110;ART100;BIO105|616 College Dr, Dorm 1|749 Maple St, Denver, CO|2.51
+Hannah King|S10014|ECON200;ENG103;HIST110;PSY120;ART100|855 College Dr, Dorm 2|249 Maple St, Colorado Springs, CO|2.78
+George Quincy|S10015|PSY120;MATH202;CHEM210;ENG103;HIST110|510 College Dr, Dorm 1|227 Oak St, Colorado Springs, CO|2.23
+Ian Clark|S10016|PSY120;CS101;CHEM210;HIST110|934 College Dr, Dorm 3|259 Cedar St, Fort Collins, CO|2.74
+Alice Perez|S10017|CHEM210;ECON200;ENG103|693 College Dr, Dorm 3|202 Maple St, Boulder, CO|3.64
+Fiona Brown|S10018|ECON200;BIO105;PSY120;CS101;ART100|478 College Dr, Dorm 4|296 Pine St, Boulder, CO|2.6
+Sara Lewis|S10019|CS101;PSY120;ENG103|998 College Dr, Dorm 3|147 Maple St, Denver, CO|2.48
+Mike Nelson|S10020|PHYS130;ECON200;ART100;BIO105|771 College Dr, Dorm 5|267 Oak St, Boulder, CO|3.7
+Kevin Brown|S10021|BIO105;ECON200;HIST110;CS101;PHYS130|710 College Dr, Dorm 5|415 Elm St, Denver, CO|2.27
+Kevin Johnson|S10022|PHYS130;PSY120;BIO105;HIST110;CS101|969 College Dr, Dorm 4|394 Elm St, Fort Collins, CO|3.36
+Sara Roberts|S10023|HIST110;PHYS130;ART100;ECON200;CHEM210|996 College Dr, Dorm 1|461 Oak St, Fort Collins, CO|3.14
+Mike Clark|S10024|BIO105;PSY120;CS101|571 College Dr, Dorm 1|365 Maple St, Colorado Springs, CO|3.33
+Charlie Lewis|S10025|CS101;CHEM210;PHYS130;HIST110;ART100|417 College Dr, Dorm 5|498 Maple St, Denver, CO|3.89
+Tom Brown|S10026|ECON200;PHYS130;MATH202|637 College Dr, Dorm 4|679 Cedar St, Fort Collins, CO|2.99
+Kevin Roberts|S10027|CS101;MATH202;PHYS130;ART100|786 College Dr, Dorm 4|480 Oak St, Aurora, CO|2.01
+Diana Nelson|S10028|CHEM210;ENG103;PSY120;ART100;ECON200|309 College Dr, Dorm 1|692 Maple St, Aurora, CO|2.38
+Alice Owens|S10029|MATH202;CS101;ECON200;CHEM210|867 College Dr, Dorm 3|178 Elm St, Denver, CO|2.88
+Mike Foster|S10030|HIST110;BIO105;PSY120;PHYS130|108 College Dr, Dorm 5|999 Elm St, Colorado Springs, CO|2.43
+Ian Turner|S10031|ENG103;CS101;ECON200;CHEM210;MATH202|687 College Dr, Dorm 2|843 Pine St, Denver, CO|2.09
+Sara Brown|S10032|ENG103;PHYS130;CS101;MATH202|449 College Dr, Dorm 4|508 Cedar St, Aurora, CO|3.85
+Quinn Turner|S10033|MATH202;PHYS130;PSY120;HIST110;CHEM210|602 College Dr, Dorm 2|787 Oak St, Fort Collins, CO|2.97
+Ian Lewis|S10034|ENG103;PSY120;BIO105|531 College Dr, Dorm 3|852 Elm St, Boulder, CO|3.11
+Mike Roberts|S10035|PSY120;CHEM210;MATH202|600 College Dr, Dorm 1|815 Cedar St, Denver, CO|2.56
+Kevin Clark|S10036|ENG103;HIST110;PHYS130|729 College Dr, Dorm 3|566 Maple St, Aurora, CO|3.26
+Hannah Davis|S10037|PHYS130;HIST110;CHEM210|374 College Dr, Dorm 4|690 Maple St, Fort Collins, CO|3.08
+Ian Johnson|S10038|HIST110;CS101;MATH202;ART100;ECON200|422 College Dr, Dorm 2|697 Oak St, Boulder, CO|2.72
+Bob Davis|S10039|HIST110;MATH202;ENG103;PHYS130|139 College Dr, Dorm 5|843 Cedar St, Aurora, CO|3.2
+Alice Nelson|S10040|HIST110;MATH202;CS101|834 College Dr, Dorm 5|183 Cedar St, Aurora, CO|3.49
+Ryan Anderson|S10041|HIST110;PHYS130;CHEM210|294 College Dr, Dorm 2|633 Maple St, Colorado Springs, CO|2.33
+Ian Quincy|S10042|ART100;CS101;ENG103|835 College Dr, Dorm 2|548 Pine St, Boulder, CO|3.67
+Jill Perez|S10043|ECON200;HIST110;CS101;ART100;PHYS130|850 College Dr, Dorm 2|533 Elm St, Aurora, CO|3.16
+Fiona Anderson|S10044|CS101;HIST110;PSY120;ART100;ENG103|199 College Dr, Dorm 2|706 Pine St, Denver, CO|2.68
+Oscar Irwin|S10045|HIST110;BIO105;MATH202|348 College Dr, Dorm 5|248 Cedar St, Boulder, CO|3.2
+Bob Brown|S10046|CS101;ECON200;MATH202;ART100;HIST110|822 College Dr, Dorm 2|865 Cedar St, Fort Collins, CO|2.09
+Ian Quincy|S10047|ART100;PHYS130;MATH202;PSY120;BIO105|842 College Dr, Dorm 1|243 Cedar St, Fort Collins, CO|3.41
+Nina Turner|S10048|BIO105;ENG103;HIST110;PSY120|174 College Dr, Dorm 5|148 Maple St, Aurora, CO|3.11
+Sara King|S10049|PHYS130;ART100;MATH202;CHEM210|579 College Dr, Dorm 5|885 Cedar St, Fort Collins, CO|3.45
+Jill King|S10050|ECON200;PHYS130;CS101|815 College Dr, Dorm 2|156 Maple St, Denver, CO|2.24
+Ian Lewis|S10051|ENG103;CHEM210;MATH202;CS101|978 College Dr, Dorm 1|894 Pine St, Fort Collins, CO|2.17
+Diana Davis|S10052|CS101;PSY120;ECON200;ART100;CHEM210|764 College Dr, Dorm 4|273 Cedar St, Colorado Springs, CO|2.36
+Sara Roberts|S10053|HIST110;BIO105;ART100;ENG103|986 College Dr, Dorm 5|649 Oak St, Boulder, CO|3.46
+Sara Smith|S10054|PHYS130;ART100;CS101;PSY120;ENG103|486 College Dr, Dorm 4|890 Oak St, Denver, CO|2.17
+Paula Lewis|S10055|HIST110;CHEM210;PSY120;ART100|147 College Dr, Dorm 2|386 Maple St, Boulder, CO|3.01
+Alice Quincy|S10056|CHEM210;MATH202;PSY120;ART100;ECON200|889 College Dr, Dorm 1|301 Pine St, Boulder, CO|2.05
+Fiona Lewis|S10057|CHEM210;MATH202;ECON200|964 College Dr, Dorm 3|841 Maple St, Fort Collins, CO|3.06
+Diana Anderson|S10058|BIO105;CS101;MATH202;ART100|812 College Dr, Dorm 4|213 Pine St, Denver, CO|2.95
+Hannah Lewis|S10059|CS101;CHEM210;ART100;PSY120|600 College Dr, Dorm 2|963 Cedar St, Denver, CO|3.51
+Oscar Brown|S10060|HIST110;PSY120;ART100|177 College Dr, Dorm 3|281 Cedar St, Aurora, CO|2.46
+Kevin Lewis|S10061|CS101;MATH202;ECON200|347 College Dr, Dorm 5|897 Elm St, Fort Collins, CO|3.43
+Laura Garcia|S10062|ART100;CS101;HIST110|766 College Dr, Dorm 1|725 Pine St, Colorado Springs, CO|3.8
+Bob Davis|S10063|ART100;BIO105;ENG103|350 College Dr, Dorm 3|605 Cedar St, Denver, CO|2.78
+Kevin King|S10064|PSY120;BIO105;CHEM210|416 College Dr, Dorm 2|935 Elm St, Aurora, CO|2.39
+Tom Clark|S10065|ECON200;BIO105;CS101;MATH202|177 College Dr, Dorm 2|959 Maple St, Colorado Springs, CO|2.82
+Charlie Clark|S10066|HIST110;ENG103;CHEM210;PHYS130|855 College Dr, Dorm 5|909 Elm St, Denver, CO|2.44
+Quinn Owens|S10067|ART100;ECON200;PSY120|921 College Dr, Dorm 2|705 Pine St, Boulder, CO|2.04
+Quinn Johnson|S10068|BIO105;HIST110;ECON200|516 College Dr, Dorm 1|657 Cedar St, Fort Collins, CO|3.09
+Tom Garcia|S10069|HIST110;PSY120;ENG103;ART100|948 College Dr, Dorm 3|441 Pine St, Aurora, CO|2.34
+George Anderson|S10070|ECON200;PHYS130;HIST110;CHEM210|529 College Dr, Dorm 1|316 Maple St, Fort Collins, CO|2.67
+George Smith|S10071|PSY120;ECON200;MATH202|426 College Dr, Dorm 3|123 Maple St, Denver, CO|2.82
+Mike Turner|S10072|BIO105;PSY120;PHYS130|416 College Dr, Dorm 1|983 Oak St, Fort Collins, CO|2.73
+Fiona Nelson|S10073|PHYS130;PSY120;MATH202|422 College Dr, Dorm 1|129 Pine St, Fort Collins, CO|3.67
+Sara Quincy|S10074|ENG103;CS101;MATH202;ART100|253 College Dr, Dorm 3|249 Elm St, Boulder, CO|2.42
+Ian Harris|S10075|BIO105;CS101;ENG103;ECON200;ART100|790 College Dr, Dorm 1|693 Oak St, Boulder, CO|3.42
+Nina Nelson|S10076|CS101;ECON200;CHEM210|384 College Dr, Dorm 1|247 Cedar St, Aurora, CO|3.21
+Quinn Clark|S10077|ECON200;MATH202;ENG103;CHEM210|466 College Dr, Dorm 1|465 Elm St, Colorado Springs, CO|3.44
+Laura Turner|S10078|PHYS130;PSY120;CS101|341 College Dr, Dorm 1|120 Elm St, Fort Collins, CO|3.54
+Charlie Quincy|S10079|ART100;MATH202;HIST110;CS101|663 College Dr, Dorm 2|818 Oak St, Denver, CO|3.25
+Oscar Brown|S10080|CHEM210;BIO105;PHYS130|901 College Dr, Dorm 1|832 Oak St, Colorado Springs, CO|3.29
+Charlie Clark|S10081|MATH202;ECON200;ENG103;PSY120|832 College Dr, Dorm 4|657 Maple St, Boulder, CO|2.29
+Laura Evans|S10082|PHYS130;ECON200;PSY120;HIST110|734 College Dr, Dorm 5|121 Maple St, Denver, CO|2.52
+Paula Harris|S10083|BIO105;HIST110;PHYS130;ART100|823 College Dr, Dorm 4|146 Elm St, Fort Collins, CO|2.13
+Oscar Foster|S10084|BIO105;MATH202;ART100|580 College Dr, Dorm 3|828 Oak St, Boulder, CO|3.53
+Nina Davis|S10085|CS101;ECON200;BIO105;CHEM210;PSY120|815 College Dr, Dorm 4|572 Elm St, Fort Collins, CO|2.8
+Ethan King|S10086|ECON200;HIST110;CHEM210;PSY120;CS101|984 College Dr, Dorm 2|553 Maple St, Fort Collins, CO|2.34
+Jill Quincy|S10087|ART100;MATH202;BIO105;PSY120;PHYS130|188 College Dr, Dorm 5|573 Oak St, Fort Collins, CO|3.92
+Fiona Garcia|S10088|MATH202;BIO105;CS101|505 College Dr, Dorm 1|475 Elm St, Boulder, CO|3.43
+Tom Garcia|S10089|ENG103;PSY120;ART100|991 College Dr, Dorm 1|958 Cedar St, Colorado Springs, CO|2.17
+Nina Davis|S10090|CS101;PSY120;CHEM210;ART100;BIO105|538 College Dr, Dorm 3|982 Cedar St, Boulder, CO|3.13
+Mike Clark|S10091|CHEM210;PHYS130;ENG103|748 College Dr, Dorm 4|276 Pine St, Denver, CO|2.55
+Nina Garcia|S10092|CS101;PHYS130;ECON200;PSY120;CHEM210|404 College Dr, Dorm 4|480 Pine St, Boulder, CO|2.53
+George Johnson|S10093|PSY120;ART100;BIO105;PHYS130|561 College Dr, Dorm 4|333 Cedar St, Boulder, CO|3.36
+Tom Nelson|S10094|ENG103;ECON200;CHEM210;PSY120;MATH202|263 College Dr, Dorm 4|806 Pine St, Denver, CO|3.7
+Oscar Perez|S10095|MATH202;ECON200;PHYS130|484 College Dr, Dorm 1|569 Elm St, Boulder, CO|3.78
+Fiona Clark|S10096|HIST110;ENG103;BIO105;PHYS130;ECON200|321 College Dr, Dorm 1|816 Maple St, Boulder, CO|3.57
+Quinn Smith|S10097|PHYS130;ART100;ECON200;HIST110|520 College Dr, Dorm 3|616 Elm St, Aurora, CO|2.13
+Laura Davis|S10098|ECON200;CS101;PHYS130|527 College Dr, Dorm 1|210 Pine St, Denver, CO|3.12
+Ian Owens|S10099|ENG103;CHEM210;MATH202;HIST110|885 College Dr, Dorm 5|745 Elm St, Boulder, CO|3.84
