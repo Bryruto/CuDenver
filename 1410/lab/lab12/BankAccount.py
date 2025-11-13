@@ -6,8 +6,8 @@ Status:works as expected
 """
 class BankAccount:
     """this is a bankaccount(self,balance) 
-        you can deposit 
-        you can withdraw
+        you can deposit(self,amount:float)
+        you can withdraw(self,amount:float)
         tracks the balance starting at 0 if not given a balance
         """
     def __init__(self,balance = 0.0):
