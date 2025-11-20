@@ -1,7 +1,9 @@
 # BankAccount.py
-# Author: 
-# Date: 
+# Author: Brycen Anderson
+# Date: 11/19/2015
+#Class: CSCI 1411-003
 
+#Status:works as expected 
 #import Transaction class
 from Transaction import *
 
@@ -74,11 +76,11 @@ def display_list (list_of_transactions):
    # Sort the list of transactions by date and display list of transactions
    tmp = sorted(list_of_transactions,key = lambda x:x.date)
    # in form of a table
-   print (f"{'date':<10} {'type':<10} {'amount':<10}")
-   print("="*30)
-   for i in list_of_transactions:
-       print(f"{i.date:<10} {i.transaction_type:<10} {i.amount:<10}")
-   print("="*30)
+   print (f"{'date':<12} {'type':<12} {'amount':<12}")
+   print("="*36)
+   for i in tmp:
+       print(f"{i.date:<12} {i.transaction_type:<12} ${i.amount:<12}")
+   print("="*36)
    print ('display list Function')
    
            
@@ -119,7 +121,7 @@ def calculate_balance (list_of_transactions):
         else:
             balance -= float(tran.amount)
     # Print the balance on the screen
-    print(f"this is your balance:{balance:.2f}")
+    print(f"Current balance is ${balance:.2f}")
     print ('Calculate Balance Function')
             
         
@@ -130,7 +132,7 @@ def save_data (list_of_transactions):
     # Ask user for name of the output file, sort the list of transactions by date
     with open(input("file name: "),"w") as file:
         for i in list_of_transactions:
-            file.write(f"{i.date}:{i.transaction_type}:{i.amount:.2f}")
+            file.write(f"{i.date}:{i.transaction_type}:{float(i.amount):.2f}\n")
     # and save the data using the following format:
     # date:transaction_type:amount
     # Display a message that data was saved to the output file

@@ -1,6 +1,6 @@
 # Transaction.py
-# Author: 
-# Date: 
+# Author: Brycen Anderson
+# Date:11/19/2025 
 
 class Transaction:
     """Transaction class which keep track of a bank transaction"""
