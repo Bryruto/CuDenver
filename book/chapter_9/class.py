@@ -1,3 +1,6 @@
+from car import *
+from last import Die
+import random 
 
 class Restaurant:#building a class
     def __init__(self,name,food_type):#constructer
@@ -148,9 +151,70 @@ def part8():
     brycen_anderson = Admin("brycen","anderson",20,["add","sub","delete"])
     brycen_anderson.privileges.show_privileges()
 
-class car:
-    pass
+"""
+Battery Upgrade: Use the final version of electric_car.py from this section.
+Add a method to the Battery class called upgrade_battery(). This method
+should check the battery size and set the capacity to 100 if it isnt already.
+Make an electric car with a default battery size, call get_range() once, and
+then call get_range() a second time after upgrading the battery. You should
+see an increase in the cars range.
+"""
+class Car:
+    def __init__(self,make,model,year):
+        self.make = make
+        self.model = model
+        self.year = year
+        self.miles = 0
 
+    def update_miles(self,amount_of_miles):
+        if not amount_of_miles < 0:
+            self.miles += amount_of_miles
+
+class Electric_Car(Car):
+    def __init__(self, make, model, year, battery):
+        super().__init__(make, model, year)
+        self.battery = battery 
+
+
+    def upgrade_battery(self):
+        if not self.battery == 100:
+            self.battery = 100
+
+    def get_range(self):
+        """Print a statement about the range this battery provides."""
+        if self.battery== 75:
+            range = 260
+        elif self.battery == 100:
+            range = 315
+        print(f"This car can go about {range} miles on charge.")
+
+def part9():
+    car = Electric_Car("tesla","3","2025",75)
+
+    car.get_range()
+    car.upgrade_battery()
+    car.get_range()
+
+def part13():
+    dies = [6,10,20]
+    for i in dies:
+        tmp = Die(i)
+        for _ in range(10):
+            tmp.roll_die()
+            
+def part14():
+    my_list = ["0","1","2","3","4","5","6","7","8","9","a","b","c","d","e"]
+    win = "".join(random.choices(my_list,k=4))
+    #part15
+    ner = ""
+    count=0
+    while win != ner:
+        count+=1
+        ner = "".join(random.choices(my_list,k=4))
+    print(count)
+
+def part16():
+    pass
 
 def main():
     #part1()
@@ -160,7 +224,10 @@ def main():
     #part5()
     #part6()
     #part7()
-    part8()
+    #part8()
+    #part9()
+    #part13()
+    part14()
 
 if __name__ == "__main__":
     main()
