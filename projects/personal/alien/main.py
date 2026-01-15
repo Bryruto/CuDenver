@@ -14,6 +14,7 @@ background = pygame.image.load('background.png').convert()
 background = pygame.transform.scale(background,(width,height))#fixing the size of backgroud to fit any size
 player_img = pygame.image.load('ship.png').convert_alpha()
 bullet_img = pygame.image.load('bullet.png').convert_alpha()
+buy_img = pygame.image.load('menu.png').convert_alpha()
 
 #the point counter font and font render
 font = pygame.font.Font(None, 36)
@@ -63,7 +64,6 @@ class normal_alien:
     def update(self):
         self.alien.center = (self.x,self.y)
 
-
 #player class gives a hitbox and position
 class player_sprite:
     def __init__(self,x,y):
@@ -104,7 +104,25 @@ class bullet:
     def update(self):
         self.x += self.angle_x
         self.y += self.angle_y
-        
+
+#working on this one as of now 
+class button:
+    def __init__(self,text,color,x,y):
+        self.text = font.render(text,True,color)
+        self.color = color
+        self.rect = self.text.get_rect(center=(x,y))
+        self.x = x 
+        self.y = y
+
+class buy_menu:
+    def __init__(self,img,x,y):
+        self.img = buy_img.get_rect(center=(x,y))
+        self.x = x
+        self.y = y
+
+    def clicked(self):
+        pass
+
 #the player will be in the middle at the bottom
 player = player_sprite(int(width/2),height-80)
 aliens = []
@@ -114,7 +132,7 @@ active_bullets = []
 fire_delay = 1000
 last_fire = 0
 
-
+upgrade_menu = button("Buy",)
 def game_loop():
     #this is the game loop
     global aliens, active_bullets, last_fire, level1
@@ -197,14 +215,7 @@ def game_loop():
 
         clock.tick(60)
 
-#working on this one as of now 
-class button:
-    def __init__(self,text,color,x,y):
-        self.text = font.render(text,True,color)
-        self.color = color
-        self.rect = self.text.get_rect(center=(x,y))
-        self.x = x 
-        self.y = y
+
 start = button("Start",white,width/2, height/2)
 
 #making the main menu
@@ -213,11 +224,14 @@ def main_menu():
     while running:
         screen.blit(background,(0,0))
         screen.blit(start.text,start.rect)
+
+
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if start.rect.collidepoint(event.pos):
+                    running = False
                     game_loop()
 
         pygame.display.flip()
