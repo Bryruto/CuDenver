@@ -1,0 +1,124 @@
+the file/Directory Permissions mode 
+
+permissions mode: combination of 
+<u,g,o>: user, group ,other  
+
+
+file/Directory 
+    operations 
+        ls -l (one line per file) 
+        -a (all) 
+        -d (directory only) 
+        -F (append indicator)
+        -l (long)
+        -i (inode)
+        -r (reverse)
+        -t (sort by time)
+        -s (sort by file size)
+
+        pwd,cd -,pushd,popd,mkdir,rmdir
+        cp -i,mv -i 
+        rm -rf (force to do)
+        touch (time): you can also use this to make files
+        chmod (permission)
+        stat,unlink
+
+
+    file redirection,viewing 
+        |((pipe) using the output of a program as the input of another) 
+        > (direct the output to besides your terminal )
+        >> (append output to besides your terminal )
+        < (read the input form besides your terminal) 
+        2>&1 (sending the system error message(stderr) to yuiour terminal(stdout))
+        <<s (here document take std input until next s at the beginning of a line by itself $ '...'\ substitution. 's' - no substitution)
+        cat (concatenate files and print on the standard output)
+        more/less (more is a filter for paging through text one screenful at a time. less allows backward movement in the file as well as forward movement)
+
+    Redirection order matter 
+        ls -l a.out aaa > output (this will take the output from aaa send to output)
+
+
+        stderr is 2 
+        stdout is 1
+        stdin is 3
+
+        2>&1 (move from 2 to 1 and output result)
+
+    Here Document 
+        
+        An inpute stream lieral like <pre> </pre? tag in HTML docstring in python 
+            using special metacharacter (<<)
+            to provide complex, multi-line input to a command 
+            the most common usage is used with the cat command to display a lengthy description to the user 
+            Example:
+                $cat << STOP_HERE > d.txt 
+                My login: $USER
+                    this line is indented 
+                    today is `date`
+                Bye 
+                STOP_HERE 
+                note: Delimiting identifier (STOP_HERE) should match Automatically <ctrl-l> added after entering end identifier added after the end 
+
+    Filters 
+        sort (-d,-n,-f,-r,-k) sort lines of text file
+            -d:dictionary 
+            -n: numeric 
+            -f: ignore case 
+            -r: reverse order 
+            -k: key 
+
+        uniq sort first then filter adjacent matching line from the input (or stdin) writing to output (stdout)
+            -c:
+       
+       cut (-d,-f) print selected path(fields)
+             of lines from each files 
+       
+       fr (-c,-d,-s)translate squeeze, and/or delete characters -c complement
+       
+       head (-20,-c) print the fist 20 lines of each file to standard output -c bytes 
+       
+       tail (-20,-c,-f,-n)print the last 20 lines 
+       
+       diff (-y(side by side)) compare files line by line 
+
+    ex: 
+        requirement: displaying all fields in a directory 
+
+        ls -la |(this will list files and show hidden ones )
+        grep -v "total" | ()
+        sort -k5 -n -r | (sort k5:() by n:(numeric) in r:(reverse) )
+        tr -s [:blank:] '\t' |(s:squeeze spaces to 1 tab)
+        cut -f 5,10 #TAB (\t) |( )
+
+
+    filters-find and grep 
+        grep (-e,-i,-s,-v,-n,-F:fgrep,-E:egrep)
+            search files for specific text (egrep: extended exp
+            containing regular expr, fgrep: a fixed string)
+            
+        find () 
+            search a directory hierarchy for filenames that meet a desired criteria; name(iname),size,type,perm, -exec
+            find.-type f-name ".mp3" -exec cp{}/tmp/Musicfile\;
+            pipe with xargs
+
+        .:the current directory 
+        -type:the file type your looking for 
+        f-name:
+        ".mp3": this is with type\
+        -exec: make an exacutable 
+
+
+    find and grep combined 
+        user -> find -> output
+        $find/usr-name"*.h"2>/dev/null -exec grep -H"O_APPEND"{} \;
+        2>/dev/null: move the error messages to dev/null
+
+    process commands 
+        bg(&), fg,stop(^Z) put the process background,bring up to foreground ,stop process
+        ps, top (-e,-l,u <name>,<pid>) displays information about a selection of the active processes 
+        jobs: display the status of jobs started in the current shell environment + (bg,fg candidate)
+
+
+
+
+
