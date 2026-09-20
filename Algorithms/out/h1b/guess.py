@@ -23,9 +23,7 @@ def sim(num_of_games:int,min:int,max:int):
     print(f"The random number between {min} and {max}:Total number of guesses:{sum} Avg:{sum/num_of_games:.02f}")
 
 
-def main():
+if __name__ == "__main__":
     sim(10000,1,1000)
     sim(10000,1,10000)
     sim(10000,1,1000000)
-        
-main()
