@@ -1,0 +1,135 @@
+pointers 
+    int number; 
+    int *p1, *p2;
+
+
+    Number = 22;
+    p1 = &number;
+    number = 23;
+    p2 = &number;
+    printf(" *p1 = %d *p2=%d",*p1,*p2);
+
+    output will be 23 for both 
+
+    int x; /* int; */
+    int *x; /* pointer to int; */
+    int x[10]; /* array of ints; */
+    int *x[10]; /* array of pointers to int;*/
+    int (*x)[10]; /* pointer to array of int;*/
+
+    int * alloc_ints(size_t requested_count){
+            int *big_array; 
+            big_array = (int *) calloc(requested_count, sixeof(int));
+            if (big_array == NULL){
+                    printf("calloct allocate %d ints: %m\n",requested_count);
+                    return NULL;
+                }
+        }
+
+        calloc == continues memory allocation 
+        malloc == dynamic memory allocation 
+
+        malloc(size in bytes of data you must allocate)
+        
+        if you allocate memory then you must free that memory
+
+        Allocating a structure instance 
+            struct stud_record * pointer; 
+            pointer = malloc(sizeof(struct stud_record));
+            pointer->id = 10;
+
+
+
+
+structures 
+
+    struct stud_record{
+        char name[50];
+        int id;
+        int age;
+        int major; 
+    };
+
+
+    struct stud_record my_my_record;
+    struct stud_record * pointer; 
+    pointer = & my_record;
+
+    my_record.id = 10;
+    or  
+    pointer->id = 10;
+
+
+Macros
+    macros in c ARe the names given to specific constant values or code statements that are replaced with their value/code beffore the compilation processor. 
+
+    C Macros are defined using the #define 
+        
+    #define FUDGE_FACTOR 45.6
+    #define MSEC_PER_SEC 1000
+    #define INPUT_FILENAME "my_input_file"
+
+
+    #define Added_Two (2+value)
+    
+    #define DBG(argv, argc){
+            do{
+                    fprintf(stderr, "%s:%s:%d: ", __FUNCTION__, __FILE__, __LINENO__)
+                }while(0);
+        }
+
+
+    #define DEBUG_DETAIL
+
+    if defined(DEBUG_DETAIL){
+            fprintf(stderr, "%s:")
+        }
+
+Tips for readability and portability 
+    Replacing numbers in your code with Macros 
+        #define MAX_NAME_LEN 50;
+        char name[MAX_NAME_LEN];
+    
+    Avoiding global variables 
+    
+    giving variables and functions a meaningful name 
+    
+    don't repeat your code 
+    
+    Dont let the function body exceed one screen if applicable indenting you code 
+    
+    commenting your code 
+    
+    don;t rush into coding  design first
+
+c++ vs C 
+    c++ is a superset of C 
+    C++ has all the characteristics of C 
+    object-oriented 
+    using g++ to compile your code 
+
+Text editor compilation 
+   Compile Option 
+        -I 
+            specify include path for preprocessor 
+            -I ~/myProject/include 
+
+        -l 
+            specify a library file to include 
+            -lxyz means linking libxyz.a #where 'lib' is a prefix and '.a' is a suffix 
+            gxx -o math_hello math_hello.c -lm #library name:libm.a
+
+        -L 
+            specify a libraary path to search for preprocessor 
+            -L~/myProject/lib 
+            the directories searched include 
+
+
+        -c: gcc -c hello. #only object code hello.o is created 
+        ``
+
+
+
+
+
+
