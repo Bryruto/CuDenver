@@ -6,16 +6,17 @@ insertcomp,mergecomp = 0,0
 mergetime = []
 inserttime = []
 
+#plot the points and map 
 def plot():
     size = [1000,10000,100000,250000,500000,1000000]
-    
     plt.plot(size,mergetime,label="merge Sort" ,marker=".",ms=15,markerfacecolor="blue")
     plt.plot(size,inserttime,label="insertion Sort",marker=".",ms=15,markerfacecolor="orange")
     
     plt.title("Time(seconds) vs Number of elements",fontsize=20)
+    plt.ticklabel_format(axis="x",style="plain",useOffset=False)
     plt.ylabel("Time (seconds)")
     plt.xlabel("Number of elements")
-    
+    plt.tight_layout()
     plt.grid(axis="both",linewidth=2,color="black",linestyle="dotted")
     plt.show()
 
@@ -38,8 +39,7 @@ def timeEfficiency(funcName, *args,**keys):
     elif elapsed >= 1000000:
         took = f"{elapsed / 1000000:.3f} ms"
     else:
-        took = f"{elapsed} ns"
-    comp = 0 
+        took = f"{elapsed} ns" 
     
     #i just added when i had to its a little much now hahaha
     return "Function Name: " + str(funcName.__name__) + f"\nComparisons: {comp}" + "\nReal Time:" + took + "\nOutPut\n" + str(result)  
@@ -88,8 +88,10 @@ def insertionSort(arr):
     global insertcomp
     for i in range(1,len(arr)):
         j = i - 1
-        while j >= 0 and arr[j+1] < arr[j]:
+        while j >= 0:
             insertcomp += 1 
+            if arr[j+1] >= arr[j]:
+                break
             arr[j+1],arr[j] = arr[j],arr[j+1]
             j -= 1
     return arr
@@ -108,8 +110,8 @@ def main():
             mergecomp,insertcomp = 0,0
             print(timeEfficiency(mergeSort,arr.copy(),0,len(arr)-1))
             print(timeEfficiency(insertionSort,arr.copy()))
-            #if input("Look at output Enter when done and it will go to the next q to quit-> ") == 'q':
-                #break
+            if input("Look at output Enter when done and it will go to the next q to quit-> ") == 'q':
+               break
     plot()
 if __name__ == "__main__":
     main()
