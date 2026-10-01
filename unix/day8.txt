@@ -1,0 +1,138 @@
+An introduction to make 
+
+    what is make 
+        the 'make' utility automatically determines whcih pieces of a large program need to be recompiled m and issues commands to recompile them. -- the GNU make  
+
+    common uses include:
+        compiling multi-file programs 
+        creating libraries and archives 
+        installing software 
+        other automated tasks 
+            running tests 
+            cleaning generated files(make clean)
+            generating documentation 
+
+why make 
+    out programs in classes typically involve a single source file 
+
+how make works 
+    when one file is edited , other files may need to ve recompiled especially when there are:
+        changes to typedefs or macros in header files 
+        changes to types of shared variables 
+        changes to the function headers of library functions 
+
+    project can contain a lot of files 
+        linux kernel source code: 4999 files 
+    to figure out the files to compile whenever any file is changed can be very error-prone, cumbersome, and time-consuming 
+
+    obvious idea: only recompile those files that need to be recompiled.
+
+    
+    smart recompilation
+        need to be able to expresss and keep track of dependencies between files 
+            dependency which files are affected by a change to a file 
+
+make specifies two things in a M(m)akefile:
+    dependencies between files 
+    how to update dependent files 
+
+    structure 
+        Macros (optional)
+        target:
+            command 
+            command 
+
+
+    Macros: frequently used variables that represent a value such as a compiler name, compiler options, filenames they make the Makefile easier to read, modify, and maintain. 
+
+    Target:
+        (usually) a file name 
+
+    ex:
+        main: main.o subs.o 
+            gcc -o main main.o subs.o 
+
+        subs.o: subs.c subs.h
+            gcc -c subs.c 
+
+        main.o: main.c subs.h 
+            gcc -c main.c 
+       
+    default target: the first target defined,executed in makefile 
+
+
+    using make 
+        make [-f makefilename] [target] 
+
+    make options 
+        -f filename -when makefile name is not standard 
+        -t touch - mark the targets as up to date 
+        -q question are he targets up to dae , exits with 0 if true?
+        -n print the commands to execute 
+        -s silent mode 
+        -k keep going - compile like all the prerequisites even 
+    
+    make worsk as follows 
+        given a target (or the default target):
+            find he rule for the target 
+        
+    ex:
+    prog1: main.o read.o list.o
+        g++ main.o read.o list.o -o prog1
+
+    main.o: main.c read.h list.h
+        g++ -c main.c 
+    
+    read.o read.c read.h
+        g++ -c read.c 
+
+    list.o: list.c list.h 
+        g++ -c list.c 
+
+
+
+    #define macros 
+    SRCS = main.c numprint.c 
+    HDRS = main.h 
+    OBJECTS = main.o numprint.o 
+    LIBS = -lm 
+    cc = gcc 
+    CFLAGS = -g -ansi -wall -std=c99 
+    EXEC = lab01
+
+    all: $(EXEC)
+    $(EXEC) : $(OBJECTS)\
+        $(CC) $(CFLAGS) $(INCLUDE) $(LIBS) $(OBJECTS) -o $(EXEC)
+
+    clean: 
+        rm -f $(OBJECTS) $(EXEC) core *~
+
+    depend:
+        makedepend -- $(CFLAGS) $(INCLUDES) $(SRCS) $(HDRS)
+
+
+
+    Automatic (predefined) Variables 
+    
+    set automatically by make, depend on current rule 
+    $@ - target 
+    $^ - list of all the prerequisites 
+        including the directories they were foudn 
+    $< - first prerequisite in the prerequistite list. 
+        $< is often used when you want just the .c file in the command, while the prerequisites list contains many .h too 
+    $?
+
+
+    implicit rules (suffix)
+
+        we saw "explicit rules" hso far, e.g:
+        list.o: list.c list.h 
+            g++ -c list.c 
+
+        implicit rules :
+            create ".o" 
+
+        
+
+
+
