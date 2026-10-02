@@ -1,8 +1,6 @@
 TITLE pa3pt1.asm
 INCLUDE Irvine32.inc
 
-ZERO = 0
-
 .data
 myArray WORD 5767h, 2132h, 4798h
 arrayCount = ($ - myArray) / 2;2bytes = word
