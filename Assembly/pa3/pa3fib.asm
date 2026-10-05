@@ -41,6 +41,7 @@ loop shift
 mov bl, byte ptr[fibArray + 20]; fib(5) = 5
 mov bh, byte ptr[fibArray + 24]; fib(6) = 8
 
+call DumpRegs
 
 mov esi, offset fibArray
 mov ecx, lengthof fibArray
