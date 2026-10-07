@@ -1,3 +1,4 @@
+
 # Everything hw2 part 3 is here or you can go to its markdown
 
 ## Student Information
@@ -141,4 +142,23 @@ most but not log n
 operations.
 
 ### part 3
+
+#### A 
+
+so insertion sort is O(k^2) operations if merging is O(n/k) then if you 
+do insertion sort when you get to k elements instead of splitting all the way down 
+this will be k^2 * n/k 
+T(n) = O(nk)
+
+#### B 
+
+mergesort is O(n lg(n/k)) because you have n elements you split those n elements k 
+times till subset of n is 1 then you build going back up with recursion. but it must 
+look at every element to compare them so the total is O(n) * O(lg(n/k)) = O(n lg(n/k))
+
+#### C
+
+what is the largest k so that insertion sort makes the mergesort algorithm faster before it 
+gets to a point where insertion sort slows the program. 
+
 
