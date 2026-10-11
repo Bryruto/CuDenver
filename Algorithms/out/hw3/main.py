@@ -1,12 +1,12 @@
 import time
 import matplotlib.pyplot as plt
 
-global quicktimes, bubbletimes
-quicktimes,bubbletimes= [],[]
+global quicktimes, bubbletimes,k1,k2,k3,k4,k5,k6,k7
+quicktimes,bubbletimes,k1,k2,k3,k4,k5,k6,k7= [],[],[],[],[],[],[],[],[]
 
 #plot the points and map 
 def plot(size:list[int]):
-    alllllllll = [quicktimes,bubbletimes]
+    alllllllll = [quicktimes,bubbletimes,k1,k2,k3,k4,k5,k6,k7]
     colors = ["blue","orange","green","red","purple","brown","pink","gray"]
     
 
@@ -44,7 +44,7 @@ def timeEfficiency(funcName, *args,**keys):
     else:
         took = f"{elapsed} ns" 
     
-    return "Function Name: " + str(funcName.__name__)  + "\nReal Time:" + took + "\nOutPut\n" + str(result[:10]) + "\n"   
+    return ["Function Name: " + str(funcName.__name__)  + "\nReal Time:" + took + "\nOutPut\n" + str(result[:10]) + "\n",elapsed/1000000000]
 
 #bubble up the largest number in array then n-1 for every loop O(n^2) time still tho
 #Brycen Bubble sort
@@ -113,19 +113,33 @@ def quickBubbleSort(arr:list[int],start:int,end:int,k:int):
             arr[left],arr[i] = arr[i],arr[left]
             left+=1
 
+    arr[end] = arr[left]
+    arr[left] = pivot
+
+    quicksort(arr,start,left-1)
+    quicksort(arr,left+1,end)
+
+    return arr
+
 def findingk():
-    pass # test k for all till 1 k is faster then take 3 less than and 3 greater times 
-    #
+    # test k for all till 1 k is faster then take 3 less than and 3 greater times 
+    with open("rand1000.txt","r") as file:
+        arr = [int(value) for value in file.read().split()]
+        for i in range(len(arr)):
+            
+
+
     
 def main():
+    k = findingk()
     fileNames = ["rand1000.txt","rand10000.txt","rand100000.txt","rand250000.txt","rand500000.txt","rand1000000.txt"]
     size = [1000,10000,100000,250000,500000,1000000]
     n = 0
     for name in fileNames:
         with open(name,"r") as file:
             arr = [int(value) for value in file.read().split()]
-            print(f"size:{size[n]}\n" + timeEfficiency(quicksort,arr.copy(),0,len(arr)-1))
-            print(f"size:{size[n]}\n" + timeEfficiency(bubblesort,arr.copy()))
+            print(f"size:{size[n]}\n" + timeEfficiency(quicksort,arr.copy(),0,len(arr)-1)[0])
+            print(f"size:{size[n]}\n" + timeEfficiency(bubblesort,arr.copy())[0])
             #print(f"size:{size[n]}" + timeEfficiency(quickBubbleSort,arr.copy()))
             n += 1
 
