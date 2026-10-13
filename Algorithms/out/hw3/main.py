@@ -1,19 +1,20 @@
 import time
 import matplotlib.pyplot as plt
 
-global quicktimes, bubbletimes,k1,k2,k3,k4,k5,k6,k7
-quicktimes,bubbletimes,k1,k2,k3,k4,k5,k6,k7= [],[],[],[],[],[],[],[],[]
+global quicktimes, bubbletimes,k
+quicktimes,bubbletimes,k= [],[],[]
 
 #plot the points and map 
 def plot(size:list[int]):
-    alllllllll = [quicktimes,bubbletimes,k1,k2,k3,k4,k5,k6,k7]
-    colors = ["blue","orange","green","red","purple","brown","pink","gray"]
-    
-
+    #plotting for bubble,quick, together plotting
     plt.plot(size,bubbletimes,label="Bubble Sort" ,marker=".",ms=15,markerfacecolor="blue")
-    plt.plot(size,quicktimes,label="Quicksort Sort",marker=".",ms=15,markerfacecolor="orange")
-    
+    plt.plot(size,quicktimes,label="Quick Sort",marker=".",ms=15,markerfacecolor="orange")
+    plt.plot(size,k,label="QuickBubble Sort",marker=".",ms=15,markerfacecolor="green")
+
+    #title of graph
     plt.title("Time(seconds) vs Number of elements",fontsize=20)
+    
+    #label x and y, space evenly 
     plt.ticklabel_format(axis="x",style="plain",useOffset=False)
     plt.ylabel("Time (seconds)")
     plt.xlabel("Number of elements")
@@ -22,15 +23,24 @@ def plot(size:list[int]):
     plt.show()
 
 def timeEfficiency(funcName, *args,**keys):
+    #start timer
     start = time.perf_counter_ns()
+    
+    #run program
     result = funcName(*args,**keys)
+    
+    #end timer get total time 
     end = time.perf_counter_ns()
     elapsed = end - start
+    
+    #formating and adding to plotting arrays
     took = ""
-    if funcName.__name__ == bubblesort:
+    if funcName.__name__ == "bubblesort":
         bubbletimes.append(elapsed/1000000000)
+    elif funcName.__name__ == "quicksort":
+        quicktimes.append(elapsed/1000000000)
     else:
-        quicktimes.append(elapsed/1000000000) 
+        k.append(elapsed/1000000000)
     
 
     if elapsed >= 3600000000000:
@@ -91,56 +101,91 @@ def quicksort(arr:list[int],start:int,end:int):
     quicksort(arr,left + 1,end)
 
     return arr
-    
 
 def quickBubbleSort(arr:list[int],start:int,end:int,k:int):
-    if k == len(arr):
-        n = len(arr)
+    if end - start + 1 <= 1:
+        return arr
+
+    #base case is now just bubblesort 
+    if end - start + 1 <= k:
+        n = end
         flip = 1
         while flip:
-            for i in range(n-1):
+            flip = 0
+            for i in range(start,n):
                 if arr[i] > arr[i+1]:
                     arr[i],arr[i+1] = arr[i+1],arr[i]
                     flip+= 1
             n-=1
         return arr
     
+    #set pivot
     pivot = arr[end]
     left = start
     
+    #loop through array
     for i in range(start,end):
-        if arr[left] < pivot:
+        if arr[i] < pivot:
             arr[left],arr[i] = arr[i],arr[left]
             left+=1
 
     arr[end] = arr[left]
     arr[left] = pivot
 
-    quicksort(arr,start,left-1)
-    quicksort(arr,left+1,end)
+    quickBubbleSort(arr,start,left-1,k)
+    quickBubbleSort(arr,left+1,end,k)
 
     return arr
 
 def findingk():
-    # test k for all till 1 k is faster then take 3 less than and 3 greater times 
-    with open("rand1000.txt","r") as file:
+    with open("rand1000000.txt", "r") as file:
         arr = [int(value) for value in file.read().split()]
-        for i in range(len(arr)):
-            
 
+    times = {}
 
+    #check 100 elements prob to much
+    for cutoff in range(1, 101):
+        times[cutoff] = timeEfficiency(quickBubbleSort, arr.copy(), 0, len(arr) - 1, cutoff)[1]
+
+        #i added to make sure its running
+        print(f"Finished cutoff {cutoff}: {times[cutoff]:.6f} seconds",flush=True)
+
+    # Select the cutoff with the lowest measured time
+    best_k = min(times, key=lambda cutoff: times[cutoff])
+
+    print(f"\nBest cutoff from 1-100: {best_k} elements\n")
+
+    #to show where the best k is 
+    for offset, label in zip(
+        [-7, -5, -3, 0, 3, 5, 7],
+        ["k-7", "k-5", "k-3", "k", "k+3", "k+5", "k+7"]
+    ):
+        cutoff = best_k + offset
+
+        #i can't sort 0 elements
+        if cutoff < 1:
+            print(f"{label}: N/A (cutoff {cutoff} is below 1)")
+            continue
+
+        if cutoff not in times:
+            times[cutoff] = timeEfficiency( quickBubbleSort, arr.copy(), 0, len(arr) - 1, cutoff)[1]
+        
+        print(f"{label}: {times[cutoff]:.6f} seconds")
+
+    return best_k
     
 def main():
-    k = findingk()
+    best_k = findingk()
+    k.clear()
     fileNames = ["rand1000.txt","rand10000.txt","rand100000.txt","rand250000.txt","rand500000.txt","rand1000000.txt"]
     size = [1000,10000,100000,250000,500000,1000000]
     n = 0
     for name in fileNames:
         with open(name,"r") as file:
             arr = [int(value) for value in file.read().split()]
-            print(f"size:{size[n]}\n" + timeEfficiency(quicksort,arr.copy(),0,len(arr)-1)[0])
-            print(f"size:{size[n]}\n" + timeEfficiency(bubblesort,arr.copy())[0])
-            #print(f"size:{size[n]}" + timeEfficiency(quickBubbleSort,arr.copy()))
+            print(f"Array size:{size[n]}\n" + timeEfficiency(quicksort,arr.copy(),0,len(arr)-1)[0])
+            print(f"Array size:{size[n]}\n" + timeEfficiency(bubblesort,arr.copy())[0])
+            print(f"Array size:{size[n]}\n" + timeEfficiency(quickBubbleSort,arr.copy(),0,len(arr)-1,best_k)[0])
             n += 1
 
             #if input("Look at output Enter when done and it will go to the next q to quit-> ") == 'q':
