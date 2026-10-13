@@ -53,7 +53,7 @@ main PROC
     exit
 main ENDP
 
-print PROC USES ecx, eax, edx
+print PROC USES ecx eax edx
     ;if input is negitive add 0.
     cmp eax, 0
     jl negitive
