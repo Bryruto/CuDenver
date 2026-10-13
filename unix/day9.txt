@@ -1,0 +1,23 @@
+sync(),fsync(), and fdatasync()
+
+#include <unistd.h>
+void sync(void)
+int fsync (int fd);
+inty fdatasyn (int fd); REturns : 0 if ok -1 for an error 
+
+Delayed-write (buffering)
+ data are normally copied by the kernel into one of its buffers and queued for later disk writes. These are system calls used to flush modified data from memory to persistent storeage 
+
+ sync() queues all the modifed 
+
+
+ File Sharing 
+
+ Each process table entry has a table of open file descriptors, which contains 
+ the file descriptor flags 
+ a pointer to file table entry 
+
+ the kernel maintains a file table for all open files each entry contains 
+ file status flags 
+ current offset 
+ pointer 
