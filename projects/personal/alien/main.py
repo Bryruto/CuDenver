@@ -132,7 +132,7 @@ active_bullets = []
 fire_delay = 1000
 last_fire = 0
 
-upgrade_menu = button("Buy",)
+upgrade_menu = button("Buy","green",50, 50)
 def game_loop():
     #this is the game loop
     global aliens, active_bullets, last_fire, level1
@@ -150,9 +150,9 @@ def game_loop():
             player.x -= 1
         if keys[pygame.K_RIGHT] or keys[pygame.K_d]:
             player.x +=1
-        """if keys[pygame.K_SPACE] and now - last_fire >= fire_delay:
-            active_bullets.append(bullet(player.x,player.y,to_x,to_y)) #this is shooting with the space bar
-            last_fire = now"""
+            #if keys[pygame.K_SPACE] and now - last_fire >= fire_delay:
+            #active_bullets.append(bullet(player.x,player.y,to_x,to_y)) #this is shooting with the space bar
+            #last_fire = now
 
 
         screen.blit(player_img,(player.x,player.y))
@@ -229,12 +229,11 @@ def main_menu():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
-            if event.type == pygame.MOUSEBUTTONDOWN:
-                if start.rect.collidepoint(event.pos):
+            if event.type == pygame.MOUSEBUTTONDOWN and start.rect.collidepoint(event.pos):
                     running = False
                     game_loop()
 
         pygame.display.flip()
-        clock.tick(60)
+        clock.tick(420)
 
 main_menu()

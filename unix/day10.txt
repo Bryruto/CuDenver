@@ -1,0 +1,48 @@
+file time 
+
+three time fields are maintained for each file 
+
+ctime is not "creation time". This misconception is extremely common 
+
+field 
+st _ atim last-access time 
+
+futimens(), utimensat(), & utimes()
+
+#include <sys/stat.h>
+int futimes (int fd,  const struct timespec times[2]);
+Int utimes (const *pathname, const struct timeval times[2]);
+<sys/time.h> 
+
+Making and reading directory 
+
+file tree walk(ftw) 
+
+reading director 
+
+#include <sys/types.h>
+#include <dirent.h>
+DIR *opendir(const char *filename); 
+DIR *fopendir (int fd);
+struct dirent *readdir(DIR *dp);
+void rewinddir(DIR * dp);
+int closedif(DIR, *dp)
+
+read by anyone with read permission on the directory , but cna be written by the kernel only to preserve file system sanity 
+
+format of directory is implementation dependent (always use readdir())
+
+rewinddir() resets an open directory to the beginning so readdir() will again return the first entry 
+
+for directory dtraversal file hierarchies consider ftw(3) or nftw(3)
+    (new file tree walk, not available on all Unix versions)
+
+#include <stdio.h>
+#include <dirent.h> 
+int main(){
+        DIR *dir; 
+        struct dirent *ent;
+        const cahr dirname = " /path/to"
+
+    }
+

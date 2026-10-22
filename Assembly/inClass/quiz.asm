@@ -1,5 +1,5 @@
 
-TITLE pa3pt1.asm
+TITLE quiz.asm
 INCLUDE Irvine32.inc
 
 .data

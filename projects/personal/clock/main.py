@@ -25,7 +25,7 @@ class Clock:
 
 class Alarm:
     def __init__(self):
-        self.alarm_text = tk.Label(root,text="hold",font=("Arial", 16))
+        self.alarm_text = tk.Label(root,text = " ",font=("Arial", 16))
         self.alarm_text.pack()
 
         #add the drop downs for hr min and am or pm
