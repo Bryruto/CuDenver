@@ -1,0 +1,4 @@
+- old fd : 3
+- new duped fd: 5
+- /proc/self/fd/3: old fd path: /csegrid/home/abrycen/csci3751/HW3/output
+- /proc/self/fd/5: new fd path: /csegrid/home/abrycen/csci3751/HW3/output

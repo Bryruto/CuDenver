@@ -1,0 +1,4 @@
+rmdir succeeded!
+.: FAILED, errno = 116
+../hw3: FAILED, errno = 116
+/csegrid/home/abrycen/q4lab/hw3: FAILED, errno = 2

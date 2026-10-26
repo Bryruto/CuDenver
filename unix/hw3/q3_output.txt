@@ -1,0 +1,49 @@
+=== Original File ===
+/csegrid/home/abrycen/csci3751/HW3/q3_links
+6053534 -rw-r--r-- 1 abrycen domain users 19 Oct 24 16:36 a.txt
+This is a.txt file
+=== Create Links ===
+total 8
+6053534 -rw-r--r-- 2 abrycen domain users 19 Oct 24 16:36 a.txt
+6053534 -rw-r--r-- 2 abrycen domain users 19 Oct 24 16:36 ha.txt
+6053536 lrwxrwxrwx 1 abrycen domain users  5 Oct 24 16:36 sa.txt -> a.txt
+This is a.txt file
+This is a.txt file
+=== File Paths ===
+/csegrid/home/abrycen/csci3751/HW3/q3_links
+total 8
+-rw-r--r-- 2 abrycen domain users 19 Oct 24 16:36 a.txt
+-rw-r--r-- 2 abrycen domain users 19 Oct 24 16:36 ha.txt
+lrwxrwxrwx 1 abrycen domain users  5 Oct 24 16:36 sa.txt -> a.txt
+=== Modify File ===
+This is a.txt file
+Modified via hard link
+This is a.txt file
+Modified via hard link
+This is a.txt file
+Modified via hard link
+=== Copy Original ===
+total 12
+6053537 -rw-r--r-- 1 abrycen domain users 42 Oct 24 16:36 aa.txt
+6053534 -rw-r--r-- 2 abrycen domain users 42 Oct 24 16:36 a.txt
+6053534 -rw-r--r-- 2 abrycen domain users 42 Oct 24 16:36 ha.txt
+6053536 lrwxrwxrwx 1 abrycen domain users  5 Oct 24 16:36 sa.txt -> a.txt
+=== Remove Original ===
+total 8
+6053537 -rw-r--r-- 1 abrycen domain users 42 Oct 24 16:36 aa.txt
+6053534 -rw-r--r-- 1 abrycen domain users 42 Oct 24 16:36 ha.txt
+6053536 lrwxrwxrwx 1 abrycen domain users  5 Oct 24 16:36 sa.txt -> a.txt
+=== Test Hard Link ===
+This is a.txt file
+Modified via hard link
+=== Test Soft Link ===
+cat: sa.txt: No such file or directory
+=== Restore Original Path ===
+total 8
+6053537 -rw-r--r-- 1 abrycen domain users 56 Oct 24 16:36 a.txt
+6053534 -rw-r--r-- 1 abrycen domain users 42 Oct 24 16:36 ha.txt
+6053536 lrwxrwxrwx 1 abrycen domain users  5 Oct 24 16:36 sa.txt -> a.txt
+=== Compare Soft Link ===
+=== Compare Hard Link ===
+3d2
+< Modified copy
