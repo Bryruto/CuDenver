@@ -1,0 +1,125 @@
+TITLE pa4.asm
+INCLUDE Irvine32.inc
+
+.data
+
+;//prompt the user for input
+Prompt byte "Enter a unsigned integer: ", 0
+;//the max size is 36 one more to end if needed
+tmpString byte 36 dup(0)
+
+;//upper and lower for random char
+lowerbound Dword 10
+upperbound Dword 35
+random Dword ?
+
+.code
+main PROC
+;//call UserInput
+call userInput
+exit
+main ENDP
+
+
+;//userinput proc
+UserInput proc uses eax edx ecx
+;//get the input from the user
+mov edx, offset Prompt
+call WriteString;// write till, 0 termination
+
+;//i will say input is 3 so i can run through this in my head
+;//store the input into a register
+call ReadDec; //store input in eax dec because unsigned
+mov ecx, eax;//eax = 0000000003
+cmp ecx, 0
+je skip
+
+;//loop input num of times
+inputNumOftimes:
+;//call generateString
+call GenerateString
+
+;//output the generated string
+mov edx, offset tmpString
+call WriteString
+call ClrString;//better do empty it here
+
+loop inputNumOftimes
+
+skip:
+ret
+
+;//end the proc
+UserInput ENDP
+
+
+GenerateString proc uses esi ecx 
+
+; //call HowMany for random string size
+call HowMany
+mov esi, offset tmpString
+;// loop HowMany times
+HowManyTimes:
+
+;//call generateCapital
+call generateCapital
+
+;//add to string you will output
+mov [esi], al
+inc esi
+
+loop HowManyTimes
+
+;//return
+ret
+GenerateString ENDP
+
+HowMany proc
+
+;//get a random value 10 - 35
+mov eax, upperbound 
+sub eax, lowerbound 
+inc eax 
+call RandomRange; 0 to 26
+
+;//add back
+add eax, lowerbound
+
+mov ecx, eax
+
+;//return
+ret
+HowMany ENDP
+
+GenerateCapital proc
+
+;//get random value between 65 - 90
+mov eax, 'Z' - 'A' + 1
+call RandomRange; stores in eax
+
+;//store this value
+add eax, 'A'
+
+;//return
+ret
+GenerateCapital ENDP
+
+ClrString proc uses ecx esi
+
+;//empty the string
+mov ecx, lengthof tmpString
+mov esi, 0
+
+empty:
+mov tmpString[esi], 0
+inc esi
+loop empty
+
+;// add a space 
+call Crlf
+;//return
+ret
+ClrString ENDP
+
+END main
+
