@@ -1,0 +1,34 @@
+σ select 
+π project
+∪ union
+− difference 
+∩ intersection
+ρ rename
+⋈ full join
+⟕ left join
+⟖ right join
+ℱ function
+
+1)
+BIGDOG <- σ(Breed='Labrador Retriever' AND PSize='Large')PETS
+
+2)
+SHELTER <- π(PName,Breed,PColor)PETS
+
+3)
+BLACK_PET <- π(PName,Breed σ(PColor = 'Black'))PETS
+
+4)
+PET_SHELTER <- ρ(Breed,Pet_count)Breed ℱ(COUNT Breed σ(Adoption status='False'))PETS
+
+5)
+PET_AND_AGE <- ρ(Breed,Size,Number_Of_Pets,Average_Age) Breed, PSize ℱ(COUNT PetID, AVERAGE Age)PETS
+
+6)
+VACCINATED <- π(OWNERS.FName, OWNERS.LName, PETS.PName,MEDICAL SERVICES.Service Date σ(MEDICAL SERVICES.Service Description = 'Vaccination')MEDICAL SERVICES ⋈ PETS ⋈ ADOPTION ⋈ OWNERS)
+7)
+
+
+
+
+

@@ -1,0 +1,15 @@
+My Thought Process
+
+I began this assignment by writing pseudocode as comments, then putting the assembly instructions right underneath each step.
+I added more comments as I went, which helped me keep track of what I was doing.
+
+At first, I put the input code in main, but after rereading the requirements, I moved it into its own UserInput procedure.
+I used ReadDec because the input was unsigned, then moved the result from EAX into ECX so I could use LOOP. 
+I also had to add a check for zero, since LOOP would not work correctly if ECX started at zero.
+
+Next, I split the rest into smaller procedures. HowMany picks a random string length from 10 to 35, 
+GenerateCapital creates random uppercase letters using the ASCII range from A to Z, and GenerateString uses ESI to store each letter in tmpString.
+
+After printing each string, I clear the buffer and move to a new line.
+I know I could have just cleared the first byte, but clearing the entire buffer was easier for 
+me to follow and made sure nothing was left over from the previous string.

@@ -47,4 +47,69 @@ the split and merge part to get O(n log k) total time complexity.
 
 ### Part 1 Prepare
 
+```python
+    # returns array of arrays or you can say matrix or 2d array
+    def prepare(file_Name:str):
+        
+        with open(file_Name,"r") as file:
+            #make array of arrays 
+            array_of_arrays = []
+            # make array with all elements
+            nums = file.read().split()
+
+        #so nums is now my array with all the elements
+        tmp = []
+        for num in nums:
+            if len(tmp) == 10_000:
+                array_of_arrays.append(tmp)
+                tmp.clear()
+            tmp.append(num)
+        return array_of_arrays
+
+# pytest prepare.py 
+    def test_prepare():
+        test_size()
+        test_Pre_Array_size()
+
+#all of my files will have a main for testing that file 
+    def test_size():
+        arr = prepare("rand1000000.txt")
+        assert len(arr) == 100 - 1, "should be the 100 sublist"
+
+#test should be in separate file 
+    def test_Pre_Array_size():
+        arr = prepare("rand1000000.txt")
+        for i in range(len(arr)):
+            assert len(arr[i]) == 10_000,"should have 10,000 elements per sublist"
+
+    if __name__ == "__main__":
+        test_prepare()
+```
+
+### output prepare
+
+```kitty
+[bryruto@Brycen-archlinux hw4]$ pytest prepare.py
+====================== test session starts ===================================
+platform linux -- Python 3.14.8, pytest-9.1.1, pluggy-1.7.0
+rootdir: /home/bryruto/CuDenver/Algorithms/out/hw4
+plugins: platformdirs-4.13.5, anyio-4.15.1, mock-3.16.0
+collected 3 item
+
+prepare.py ...                                                         [100%]
+
+==================== 3 passed in 0.28s =======================================
+```
+
+### explain
+
+So for this i used 'with open' so that i can open the file and it will
+automatically close for me when i leave the scope.I knew that .read() would
+read the whole file and .split() will split with a delimiter ' ' by default
+which will then make everything a huge array after that i make them into
+array of array by counting up till 10_000 then appending to my array_of_arrays
+then to make sure it would work and to force myself to write test
+i used pytest to test my function making sure all lengths were right.
+
+##
 
