@@ -1,3 +1,6 @@
+Name:Brycen Anderson
+title:NameOfHw4
+
 σ select 
 π project
 ∪ union
@@ -10,25 +13,25 @@
 ℱ function
 
 1)
-BIGDOG <- σ(Breed='Labrador Retriever' AND PSize='Large')PETS
+BIGDOGS <- σ(Breed='Labrador Retriever' AND PSize='Large')(PETS)
 
 2)
-SHELTER <- π(PName,Breed,PColor)PETS
+SHELTER <- π(PName,Breed,PColor)(PETS)
 
 3)
-BLACK_PET <- π(PName,Breed σ(PColor = 'Black'))PETS
+BLACK_PETS <- π(PName,Breed σ(PColor = 'Black'))(PETS)
 
 4)
-PET_SHELTER <- ρ(Breed,Pet_count)Breed ℱ(COUNT Breed σ(Adoption status='False'))PETS
+ρPET_SHELTER(Breed,Pet_count) Breed ℱ(COUNT PetID σ(Adoption status='False'))(PETS)
 
 5)
-PET_AND_AGE <- ρ(Breed,Size,Number_Of_Pets,Average_Age) Breed, PSize ℱ(COUNT PetID, AVERAGE Age)PETS
+ρBreed_Avg_Age(Breed,Size,Number_Of_Pets,Average_Age) Breed, PSize ℱ(COUNT PetID, AVERAGE Age)(PETS)
 
 6)
-VACCINATED <- π(OWNERS.FName, OWNERS.LName, PETS.PName,MEDICAL SERVICES.Service Date σ(MEDICAL SERVICES.Service Description = 'Vaccination')MEDICAL SERVICES ⋈ PETS ⋈ ADOPTION ⋈ OWNERS)
+VACCINATED <- π(OWNERS.FName, OWNERS.LName, PETS.PName,MEDICAL SERVICES.Service Date MEDICAL SERVICES.Service Description σ(MEDICAL SERVICES.Service Description = 'Vaccination')(((MEDICAL SERVICES ⋈ (MEDICAL SERVICES.SPetID = PETS.PetID) PETS) ⋈ (PETS.PetID = ADOPTION.APetID )ADOPTION) ⋈ (ADOPTIONS.AOwnerID = OWNERS.OwnerEmail) OWNERS)
+
 7)
+VACCINATION <- π(PETS.PName (π(PetID σ(MEDICAL SERVICES.Service description = 'Vaccination')) - π(PetID (MEDICAL SERVICES.Service description='Vaccination')))(PETS ⟕ (PETS.PetID = MEDICAL SERVICES.SPetID) MEDICAL SERVICES) 
 
-
-
-
-
+8)
+ρCOST(Pet Name ,description, original cost ,AdjustedCost) π(PETS.PName, MEDICAL SERVICES.Service Description, MEDICAL SERVICES.Service Cost MEDICAL SERVICES.Service Cost * 1.15) MEDICAL SERVICES(MEDICAL SERVICES.SPetID = PETS.PetID)(PETS) 

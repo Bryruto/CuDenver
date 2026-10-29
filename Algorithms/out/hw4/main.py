@@ -1,4 +1,6 @@
 import prepare 
+import radixsort
+import countingsort 
 
 #this is main
 def main():
@@ -7,7 +9,9 @@ def main():
     
     #take file first 50 elements
     array_radixSort = array[:50]
-    
+    for arr in array_radixSort: 
+        RadixSort(arr)
+
     #take file last 50 elements 
     array_BucketSort = array[49:]
     
