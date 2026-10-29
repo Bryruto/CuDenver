@@ -86,7 +86,7 @@ the split and merge part to get O(n log k) total time complexity.
         test_prepare()
 ```
 
-### output prepare
+#### output prepare
 
 ```kitty
 [bryruto@Brycen-archlinux hw4]$ pytest prepare.py
@@ -101,7 +101,7 @@ prepare.py ...                                                         [100%]
 ==================== 3 passed in 0.28s =======================================
 ```
 
-### explain
+#### explain prepare
 
 So for this i used 'with open' so that i can open the file and it will
 automatically close for me when i leave the scope.I knew that .read() would
@@ -111,5 +111,23 @@ array of array by counting up till 10_000 then appending to my array_of_arrays
 then to make sure it would work and to force myself to write test
 i used pytest to test my function making sure all lengths were right.
 
-##
+### Part 2 100 sub-list
 
+#### Radix Sort
+
+```python
+
+```
+
+##### Counting Sort
+
+```python
+```
+
+###### Explain
+
+Pass 
+
+#### Bucket Sort
+
+Pass
