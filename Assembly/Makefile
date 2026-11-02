@@ -1,5 +1,5 @@
 # MASM + Irvine32
-SRC ?= forfun/cal.asm
+SRC ?= pa5/pa5.asm
 
 DIR  := $(dir $(SRC))
 NAME := $(basename $(notdir $(SRC)))

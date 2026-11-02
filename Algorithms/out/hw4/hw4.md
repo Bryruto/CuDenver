@@ -117,17 +117,95 @@ i used pytest to test my function making sure all lengths were right.
 
 ```python
 
+#return nothing pass by ref 
+def RadixSort(arr:list):
+    #check to see if the array is empty if so return empty
+    if not arr:
+        return []
+
+    # while not sorted only running 1 array at a time
+    count=0
+    while not is_it_sorted(arr):
+
+        #make array of 0's
+        counts = [0 for _ in range(10)]
+
+        #loop through nums 
+        for num in arr:  
+            #find the index of where you want those arrays
+            index = (num//(10**count)) % 10
+            counts[index]+=1
+
+        #then we want to add them up
+        sum = 0
+        for i in range(len(counts)):
+            if counts[i] == 0:
+                continue
+
+            sum += counts[i]
+            counts[i] = sum
+        
+        new_arr = arr.copy()
+
+        #now we want to store all elements in order 
+        for i in range(len(arr) -1,-1,-1):
+            index = arr[i]
+            
+            #this is repeated work how do i make this better
+            index = (arr[i]//(10**count)) % 10
+            
+            new_arr[counts[index]-1] = arr[i]
+            counts[index]-=1
+        
+        arr[:] = new_arr #update to the new array
+        count+=1
+
+    return arr
+
+
+#this just will look to see if we need to swap any values if we do not sorted yet
+def is_it_sorted(arr:list)->bool:
+    for i in range(len(arr)-1):
+        if arr[i] > arr[i+1]:
+            return False
+    return True
+
+
+#these are the test 
+def test_RadixSort():
+    test_empty()
+    test_sorts_right()
+
+#test for if the array is empty
+def test_empty():
+    assert RadixSort([]) == [],"the array is empty"
+
+#test for if sorting is working 
+def test_sorts_right():
+    assert RadixSort([170, 45, 75, 90, 802, 24, 2, 66]) == [2,24,45,66,75,90,170,802]
+
+
+if __name__ == "__main__":
+    test_RadixSort()
 ```
 
-##### Counting Sort
+##### Explain
 
-```python
-```
-
-###### Explain
-
-Pass 
+My radix sort first checks if the array is sorted, then uses counting sort to
+organize each digit until the array is sorted. I use cumulative counts to find
+the correct positions and loop backward to keep the sorting stable. The time
+complexity is O(dn) because each digit requires O(n) work, where d is the
+number of digits. The space complexity is O(n) because I create a copy of the
+original array, while my counting array only uses O(1) space.
 
 #### Bucket Sort
 
-Pass
+For my bucket sort, I first check if the array is empty , then use
+a hash map to count how many times each number appears. I find the smallest and
+largest values to determine the range I need to iterate through, then append
+each number based on its count. The time complexity is O(n + r), where n is the
+number of elements and r is the range between the smallest and largest values.
+The space complexity is O(n) because I store the counts in a hash map and create
+a new sorted array
+
+####
