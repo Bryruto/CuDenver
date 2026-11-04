@@ -51,7 +51,7 @@ call WriteString
 call GetInt;what they want to do
 mov userSelection, al;store in variable
 mov edx, offset theString;edx is where the user will store the information
-mov ecx, lengthof theString;this is very bad
+mov ecx, lengthof theString
 
 opt1 :
 cmp userSelection, 1;if the user entered a 1
