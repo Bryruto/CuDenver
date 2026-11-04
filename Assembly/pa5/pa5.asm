@@ -253,7 +253,7 @@ PrintString endp
 ;// Description: Converts all alphabetic characters in a string to lower case.
 ;// Hint: You will need a loop, ASCII comparisons, a bitwise OR for the conversion, and ESI for indexing.
 ;// Receives: edx as pointer to the string, and the length from when the string was read i had to go add that btw
-;// Requires: ?
+;// Requires: string to look through
 ;// Returns: String is now converted to lowercase.
 ;-------------------------------------------------------------------------------- -
 ;// YOUR CODE HERE
@@ -261,12 +261,17 @@ PrintString endp
 
 ToLower proc uses ecx esi eax 
 .data
-    Atoa = 32
+    Atoa = 32;differernce A-a
 
 .code
     movzx ecx, theStringLen
     mov esi, offset theString
 
+    ;this is if it is empty
+    mov al, [esi]
+    cmp al, 0
+    je return3
+    
     Lowerloop :
 
     mov al, [esi];//looks a char al = char
@@ -291,6 +296,7 @@ ToLower proc uses ecx esi eax
 
     loop Lowerloop
 
+    return3:
     ret
 ToLower endp
 
@@ -300,8 +306,8 @@ ToLower endp
 ;// Hint: You can compare a character to 'A' or 'z'(or 'a' and 'Z'), and use jaeand jbe jumps as needed.
 ;// You will also need to come up with a strategy to shift/update the remaining characters in the string.
 ;// Don't forget to update the string length variable as well.
-;// Receives: ?
-;// Requires: ?
+;// Receives: a string and the length of that string
+;// Requires: a string to look through
 ;// Returns: String now contains only a-z or A-Z
 ;-------------------------------------------------------------------------------- -
 ;// YOUR CODE HERE
@@ -318,10 +324,15 @@ RemoveNonAlpha proc uses esi ecx eax
 
 	call ToLower ;//skip the hard part about doing this
     mov ebx, 0
+    
+    ;//this is if it is empty
+    mov al, [esi]
+    cmp al, 0
+    je return2
+
 	charbychar: 
    
         mov al, [esi] ;//al = char
-        
         cmp al, 'a'
         jb remove ;// if char < a remove
 
@@ -330,12 +341,12 @@ RemoveNonAlpha proc uses esi ecx eax
 
         push esi
 
-        mov esi, offset newWord ;look at new word
-        add esi,ebx ;add esi with ebx , ebx is my counter for what byte im on
-        mov [esi],al ;esi will be on the next Available char
+        mov esi, offset newWord ;//look at new word
+        add esi,ebx ;//add esi with ebx , ebx is my counter for what byte im on
+        mov [esi],al ;//esi will be on the next Available char
 
-        inc ebx; add 1 for next time 
-        pop esi; go back to theString
+        inc ebx; //add 1 for next time 
+        pop esi; //go back to theString
 
         remove:
             add esi, TYPE theString ;//esi + 1 for every char
@@ -344,24 +355,26 @@ RemoveNonAlpha proc uses esi ecx eax
     
     Call ClearString;
 
-    ;copy the new -> old 
-    mov newWord[ebx],0;add null terminator
+    ;//copy the new -> old 
+    mov newWord[ebx],0;//add null terminator
     mov theStringLen,bl
-    inc ebx; make sure it reads null
-    mov ecx, ebx; get the number of loop
+    inc ebx;// make sure it reads null
+    mov ecx, ebx;// get the number of loop
 
 
-    mov esi, offset newWord ; get address of newWord 1st char
-    mov edi, offset theString; get address of theString 1st char
+    mov esi, offset newWord ; //get address of newWord 1st char
+    mov edi, offset theString; //get address of theString 1st char
 
     copy:
 
-        mov al, [esi];get first byte of newWord
-        mov [edi],al ;add newWord char to theString
+        mov al, [esi];//get first byte of newWord
+        mov [edi],al ;//add newWord char to theString
         add esi, TYPE newWord;
         add edi, TYPE theString
             
     loop copy
+
+    return2:
     ret
 
 RemoveNonAlpha endp
@@ -375,8 +388,8 @@ RemoveNonAlpha endp
 ;// Use another register to also iterate forward during this same loop([edx+esi]).
 ;// With these two iterators you can compare characters of the string.
 ;// You will need to use a register as cmp cannot do memory-to-memory.
-;// Receives: ?
-;// Requires: ?
+;// Receives: theString and the length of the string
+;// Requires: a string to check and a working stack
 ;// Returns: Palindrome result printed to console.
 ;-------------------------------------------------------------------------------- -
 ;// YOUR CODE HERE
@@ -387,11 +400,15 @@ IsPalindrome proc uses esi ecx eax
 
 .code
     
-    ;get the string pointer and length
+    ;//get the string pointer and length
     mov esi, offset theString
     movzx ecx, theStringLen
     
-    ;push to stack String length times 
+    mov al,[esi]
+    cmp al,0
+    je return
+
+    ;//push to stack String length times 
     addtostack:
 
         mov al,[esi]
@@ -400,11 +417,11 @@ IsPalindrome proc uses esi ecx eax
 
     loop addtostack
     
-    ;get the string pointer and length again
+    ;//get the string pointer and length again
     mov esi,offset theString
     movzx ecx, theStringLen
 
-    ;compare using pops from stack
+    ;//compare using pops from stack
     compare:
         pop eax
         cmp al,[esi]
@@ -414,31 +431,33 @@ IsPalindrome proc uses esi ecx eax
     loop compare
     jmp equal
     
-    ;dec 1 more time then loop
+    ;//dec 1 more time then loop
     notequal:
         dec ecx
         jz donePopping
     
-    ;pop the rest
+    ;//pop the rest
     cleanup:
         pop eax
     loop cleanup
     
     donePopping:
 
-    ;print false then return
+    ;//print false then return
     mov edx,offset word0
     call WriteString
     
     ret
     
-    ;print true
+    ;//print true
     equal:
         mov edx,offset word1 
         call WriteString
     
+    return:
     ret
     
+
 IsPalindrome endp
 
 
