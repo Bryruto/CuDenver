@@ -12,7 +12,7 @@ def prepare(file_Name:str): # returns array of arrays or you can say matix or 2d
         if len(tmp) == 10_000:
             array_of_arrays.append(tmp)
             tmp.clear()
-        tmp.append(num)
+        tmp.append(int(num))
     return array_of_arrays
 
 # pytest prepare.py 

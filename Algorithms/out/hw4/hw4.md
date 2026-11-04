@@ -208,4 +208,35 @@ number of elements and r is the range between the smallest and largest values.
 The space complexity is O(n) because I store the counts in a hash map and create
 a new sorted array
 
-####
+#### Merges
+
+##### Slow Merge - O(nk)
+
+For the slower merge, I took two sorted lists and merged them together,
+then kept merging the result with the next list until only one was left.
+This takes O(nk) time because the same numbers can be processed multiple times.
+
+##### Fast Merge - O(n log k)
+
+For the faster Merge, I used recursion to split the lists into two groups until
+only one list was left in each group.  Then I merged them back together using my
+slower merge function. This takes O(n log k) time because I'm merging the lists
+in smaller groups instead of continuously growing one big list.
+
+##### Comparison
+
+As k increases, the slower merge takes more time because it has to keep going
+through the growing list.The faster merge handles this better because it divides
+the work into halves, meaning it doesn't have to go through the same numbers as
+many times.
+
+##### Speedup
+
+Speedup: I calculated the speedup by dividing the slower merge's time by the
+faster merge's time
+
+#### Time Efficiency Function
+
+I implemented a function that records the starting time in nanoseconds, executes
+a given function, and subtracts the starting time from the ending time.
+The elapsed time is converted into the appropriate unit for readability.

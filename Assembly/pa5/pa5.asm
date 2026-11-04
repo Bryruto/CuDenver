@@ -56,7 +56,7 @@ mov ecx, lengthof theString
 opt1 :
 cmp userSelection, 1;if the user entered a 1
 jne opt2;jump not equal opt2
-call clrscr;clear the string
+call clrscr;clear the screen
 call GetString
 mov theStringLen, al
 jmp menustart
@@ -65,24 +65,23 @@ jmp menustart
 opt2 :
 cmp userSelection, 2;if the user entered a 2
 jne opt3; if not check opt3
-
 call ToLower
-call waitMsg
-
 jmp menustart
 
 
 opt3 :
 cmp userSelection, 3;if the user entered a 3
 jne opt4;if not check opt4
-
-
+call RemoveNonAlpha 
 jmp menustart
 
 
 opt4 :
 cmp userSelection, 4;if the user entered a 4
-jne opt5;if not
+jne opt5
+call isPalindrome
+Call crlf 
+Call WaitMsg
 jmp menustart
 
 
@@ -212,7 +211,7 @@ clearesi
 clearebx
 
 L1 :
-mov[edx + esi], ebx
+mov Byte Ptr [edx + esi], 0
 inc esi
 loop L1
 
@@ -260,39 +259,39 @@ PrintString endp
 ;// YOUR CODE HERE
 
 
-ToLower proc uses esi ecx edx
+ToLower proc uses ecx esi eax 
 .data
-Atoa = 32
+    Atoa = 32
+
 .code
-mov esi, offset theString
-mov cl, theStringLen
+    movzx ecx, theStringLen
+    mov esi, offset theString
 
+    Lowerloop :
 
-Lowerloop :
+    mov al, [esi];//looks a char al = char
 
-mov al, [esi];//looks a char al = char
+    ;//change to lower
+    cmp al, 'a'
+    jge already;//skip if larger than a
 
-;//change to lower
-cmp al, 'a'
-jge already;//skip if larger than a
+    cmp al, 'A'
+    jl already;//skip if not a letter at all
 
-cmp al, 'A'
-jl already;//skip if not a letter at all
+    add al, Atoa
 
-add al, Atoa
+    cmp al, 'z';//becuase[] \^ _ ` i need to check this
+    jle already
 
-cmp al, 'z';//becuase[] \^ _ ` i need to check this
-jle already
+    sub al, Atoa
 
-sub al, Atoa
+    already :
+    mov [esi], al
+    add esi, TYPE theString;//update esi
 
-already :
-mov [esi], al
-add esi, TYPE theString;//update esi
+    loop Lowerloop
 
-loop Lowerloop
-
-ret
+    ret
 ToLower endp
 
 ;-------------------------------------------------------------------------------- -
@@ -306,35 +305,64 @@ ToLower endp
 ;// Returns: String now contains only a-z or A-Z
 ;-------------------------------------------------------------------------------- -
 ;// YOUR CODE HERE
-RemoveNonAlpha proc uses eax ecx ebx edx
+
+RemoveNonAlpha proc uses esi ecx eax
 
 .data
+    newWord byte maxLength dup(0)
 .code
-;//edx will hold the count of shifts we will need
+    
+    ;//edx will hold the count of shifts we will need
 	mov esi, offset theString
-	mov cl, theStringLen
+	movzx ecx, theStringLen
 
 	call ToLower ;//skip the hard part about doing this
+    mov ebx, 0
+	charbychar: 
+   
+        mov al, [esi] ;//al = char
+        
+        cmp al, 'a'
+        jb remove ;// if char < a remove
 
-		charbychar: 
-			mov al, [esi] ;//al = char
-			
-			cmp al, 'a'
-			jl remove ;// if char < a remove
+        cmp al, 'z'
+        ja remove ;// if char > a remove
 
-			cmp al, 'z'
-			jg remove ;// if char > a remove
+        push esi
 
-			jmp dontRemove
+        mov esi, offset newWord ;look at new word
+        add esi,ebx ;add esi with ebx , ebx is my counter for what byte im on
+        mov [esi],al ;esi will be on the next Available char
 
-			remove:
-				mov al, TY
+        inc ebx; add 1 for next time 
+        pop esi; go back to theString
 
-			dontRemove:
-			add esi, TYPE theString ;//esi + 1 for every char
+        remove:
+            add esi, TYPE theString ;//esi + 1 for every char
+        
+    loop charbychar 
+    
+    Call ClearString;
 
-		loop charbychar
-			ret
+    ;copy the new -> old 
+    mov newWord[ebx],0;add null terminator
+    mov theStringLen,bl
+    inc ebx; make sure it reads null
+    mov ecx, ebx; get the number of loop
+
+
+    mov esi, offset newWord ; get address of newWord 1st char
+    mov edi, offset theString; get address of theString 1st char
+
+    copy:
+
+        mov al, [esi];get first byte of newWord
+        mov [edi],al ;add newWord char to theString
+        add esi, TYPE newWord;
+        add edi, TYPE theString
+            
+    loop copy
+    ret
 
 RemoveNonAlpha endp
 
@@ -352,11 +380,65 @@ RemoveNonAlpha endp
 ;// Returns: Palindrome result printed to console.
 ;-------------------------------------------------------------------------------- -
 ;// YOUR CODE HERE
-IsPalindrome proc
+IsPalindrome proc uses esi ecx eax
 .data
+    word0 byte "False",0
+    word1 byte "True",0
 
 .code
+    
+    ;get the string pointer and length
+    mov esi, offset theString
+    movzx ecx, theStringLen
+    
+    ;push to stack String length times 
+    addtostack:
 
+        mov al,[esi]
+        push eax;
+        inc esi
+
+    loop addtostack
+    
+    ;get the string pointer and length again
+    mov esi,offset theString
+    movzx ecx, theStringLen
+
+    ;compare using pops from stack
+    compare:
+        pop eax
+        cmp al,[esi]
+        jne notequal 
+
+        inc esi
+    loop compare
+    jmp equal
+    
+    ;dec 1 more time then loop
+    notequal:
+        dec ecx
+        jz donePopping
+    
+    ;pop the rest
+    cleanup:
+        pop eax
+    loop cleanup
+    
+    donePopping:
+
+    ;print false then return
+    mov edx,offset word0
+    call WriteString
+    
+    ret
+    
+    ;print true
+    equal:
+        mov edx,offset word1 
+        call WriteString
+    
+    ret
+    
 IsPalindrome endp
 
 
