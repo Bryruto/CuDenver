@@ -42,7 +42,7 @@ def merge(arrs_in_arr:list):
             if arr1[l] <= arr2[r]:
                 tmp.append(arr1[l])
                 l+=1
-        
+         
             else:
                 tmp.append(arr2[r])
                 r+=1

@@ -1,5 +1,6 @@
-#from TestFuction import timeEfficiency
-import time 
+import time
+from radixsort import RadixSort
+
 def timeEfficiency(funcName, *args,**keys):
     
     #start timer
@@ -25,4 +26,11 @@ def timeEfficiency(funcName, *args,**keys):
         took = f"{elapsed} ns" 
     
     #return in array so i can index what i want to output
-    return ["Function Name: " + str(funcName.__name__)  + "\nReal Time:" + took + "\nOutPut\n" + str(result[:10]),result]
+    return ["Function Name: " + str(funcName.__name__)  + "\nReal Time:" + took + "\nOutPut\n" + str(result[:10]),result,elapsed]
+
+def test_time_Efficiency():
+    outputs, result = timeEfficiency(RadixSort,[170, 45, 75, 90, 802, 24, 2, 66])
+    print(outputs)
+    assert result == [2,24,45,66,75,90,170,802]
+if __name__ == "__main__":
+    test_time_Efficiency()
