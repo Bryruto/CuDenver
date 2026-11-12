@@ -21,47 +21,35 @@ def fast_merge(arrs_in_arr:list):
 
     return merge([left,right])
 
-#this will be merging them in order slower
+# slow merge by scanning the current number in every list
 def merge(arrs_in_arr:list):
+    # keep track of the next unused position in each list
+    positions = [0] * len(arrs_in_arr)
+    total_elements = sum(len(arr) for arr in arrs_in_arr)
+    result = []
 
-    #so lets just merge 2 arrays at a time for slower normal merge 
-    while len(arrs_in_arr) > 1:
+    # choose one number for each position in the result
+    for _ in range(total_elements):
+        smallest = None
+        smallest_list = -1
 
-        #making my tmp array and 2 others that i will merge
-        tmp = []
-        arr1 = arrs_in_arr.pop()
-        arr2 = arrs_in_arr.pop()
-        
-        # these are my left and right pointers
-        #also the length just a bit fast this way
-        l,r,size1,size2 = 0,0,len(arr1),len(arr2) 
-        
-        #add elements back into 1 array
-        while l < size1 and r < size2:
-            
-            if arr1[l] <= arr2[r]:
-                tmp.append(arr1[l])
-                l+=1
-         
-            else:
-                tmp.append(arr2[r])
-                r+=1
-        
-        #any left in leftside add them
-        while l < size1:
-            tmp.append(arr1[l])
-            l+=1
+        # look at the first remaining number in every nonempty list
+        for i, arr in enumerate(arrs_in_arr):
+            # skip lists that have no numbers left
+            if positions[i] >= len(arr):
+                continue
 
-        #any left in rightside add them 
-        while r < size2:
-            tmp.append(arr2[r])
-            r+=1
-        
-        #this is not great i should move this 
-        arrs_in_arr.append(tmp)
-    
+            value = arr[positions[i]]
+            # save the smallest number and which list it came from
+            if smallest_list == -1 or value < smallest:
+                smallest = value
+                smallest_list = i
 
-    return arrs_in_arr[0]
+        result.append(smallest)
+        # only advance in the list that supplied the smallest number
+        positions[smallest_list] += 1
+
+    return result
 
         
 
@@ -69,6 +57,7 @@ def merge(arrs_in_arr:list):
 def test_merges():
     test_fast_merge()
     test_merge()
+    test_merge_edge_cases()
 
 def test_fast_merge():
     assert fast_merge([
@@ -88,6 +77,25 @@ def test_merge():
     [1, 6, 13, 18],
     [5, 14, 21]]) == [0, 1, 1, 2, 3, 4, 5, 5, 6, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 18, 20, 21]
 
+
+# check empty lists and duplicates and uneven list lengths
+def test_merge_edge_cases():
+    cases = [
+        [],
+        [[]],
+        [[], [], []],
+        [[-3, 0, 0, 5]],
+        [[], [-5, 2, 2], [], [-2, 2, 4], []],
+        [[1], [0, 2, 3, 4, 5, 6], [2, 2]],
+    ]
+
+    for arrs in cases:
+        original = [arr.copy() for arr in arrs]
+        expected = sorted(num for arr in arrs for num in arr)
+        assert merge(arrs) == expected
+        assert fast_merge(arrs) == expected
+        # both merges should leave the input lists unchanged
+        assert arrs == original
 
 
 if __name__ == "__main__":

@@ -55,22 +55,49 @@ class BST:
         self.count+=1
 
 
-    def serach(self,value):
-        # Follow BST comparisons to find a value (not breadth-first search).
-        # Return True when found. Currently, a missing value returns None
-        # implicitly when the loop ends. The method name is spelled serach.
-        # Searching takes O(h) time and O(1) extra space.
+    def search(self,value) -> bool:
+        # follow comparisons to find one value
+        # return true when found or false when absent
+        # search time depends on tree height and uses constant extra space
         curr = self.root
 
         while curr is not None:
             if value == curr.value:
                 return True
             elif value < curr.value:
-                # Only the left subtree can contain a smaller value.
+                # only the left subtree can contain a smaller value
                 curr = curr.left
             else:
-                # Only the right subtree can contain a larger value.
+                # only the right subtree can contain a larger value
                 curr = curr.right
 
-        # Reaching None means the value is not in the tree.
+        # reaching an empty child means the value is not in the tree
+        return False
+
+
+def test_search_empty_tree():
+    # an empty tree contains no keys
+    tree = BST()
+    assert tree.search(5) is False
+
+
+def test_search_present_and_absent_keys():
+    # check the root and both subtrees against expected membership
+    values = [8, 3, 10, 1, 6, 14, 4, 7, 13]
+    tree = BST()
+    for value in values:
+        tree.insert(value)
+    for key in range(-1, 17):
+        assert tree.search(key) is (key in values)
+
+
+def test_duplicate_insertion():
+    # duplicates remain searchable without increasing the unique count
+    tree = BST()
+    for value in [5, 3, 7, 5, 3, 7]:
+        tree.insert(value)
+    assert tree.count == 3
+    for key in [3, 5, 7]:
+        assert tree.search(key) is True
+    assert tree.search(6) is False
 

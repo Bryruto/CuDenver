@@ -1,5 +1,7 @@
-def prepare(file_Name:str): # returns array of arrays or you can say matrix or 2d array
-    
+def prepare(file_Name:str, k=100): # k is the number of inner arrays
+    if k < 1:
+        raise ValueError("k must be at least 1")
+
     with open(file_Name,"r") as file:
         #make array of arrays 
         array_of_arrays = []
@@ -7,15 +9,12 @@ def prepare(file_Name:str): # returns array of arrays or you can say matrix or 2
         nums = file.read().split()
 
     #so nums is now my array with all the elements
-    tmp = []
-    for num in nums:
-        if len(tmp) == 10_000:
-            array_of_arrays.append(tmp)
-            tmp = []
-
-        tmp.append(int(num))
-    if tmp:
-        array_of_arrays.append(tmp)
+    size, extra = divmod(len(nums), k)
+    start = 0
+    for i in range(k):
+        end = start + size + (i < extra)
+        array_of_arrays.append([int(num) for num in nums[start:end]])
+        start = end
 
     return array_of_arrays
 

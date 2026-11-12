@@ -1,0 +1,3 @@
+# Keep the Assembly dependencies despite the parent Python ignore rules.
+!lib/
+!lib/**

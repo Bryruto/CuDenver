@@ -29,8 +29,7 @@ def timeEfficiency(funcName, *args,**keys):
     return ["Function Name: " + str(funcName.__name__)  + "\nReal Time:" + took + "\nOutPut\n" + str(result[:10]),result,elapsed]
 
 def test_time_Efficiency():
-    outputs, result = timeEfficiency(RadixSort,[170, 45, 75, 90, 802, 24, 2, 66])
-    print(outputs)
-    assert result == [2,24,45,66,75,90,170,802]
+    result = timeEfficiency(RadixSort,[170, 45, 75, 90, 802, 24, 2, 66])
+    assert result[1] == [2,24,45,66,75,90,170,802]
 if __name__ == "__main__":
     test_time_Efficiency()
